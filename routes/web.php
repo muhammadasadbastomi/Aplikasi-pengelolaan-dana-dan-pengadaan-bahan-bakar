@@ -15,6 +15,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
 Route::get('/admin/index', 'adminController@index')
         ->name('adminIndex');
