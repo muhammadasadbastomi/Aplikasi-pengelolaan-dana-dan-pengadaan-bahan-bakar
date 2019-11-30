@@ -48,21 +48,21 @@
                     <nav>
                         <ul class="metismenu" id="menu">
                             <li>
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-pie-chart"></i><span>Charts</span></a>
+                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-pie-chart"></i><span>Data karyawan</span></a>
                                 <ul class="collapse">
-                                    <li><a href="barchart.html">bar chart</a></li>
-                                    <li><a href="linechart.html">line Chart</a></li>
-                                    <li><a href="piechart.html">pie chart</a></li>
+                                    <li><a href="{{Route('bidangIndex')}}">Bidang</a></li>
+                                    <li><a href="linechart.html">Seksi Bidang</a></li>
+                                    <li><a href="piechart.html">Karyawan</a></li>
                                 </ul>
                             </li>
                             <li>
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-palette"></i><span>UI Features</span></a>
+                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-palette"></i><span>Data Kendaraan</span></a>
                                 <ul class="collapse">
-                                    <li><a href="accordion.html">Accordion</a></li>
-                                    <li><a href="alert.html">Alert</a></li>
-                                    <li><a href="badge.html">Badge</a></li>
-                                    <li><a href="button.html">Button</a></li>
-                                    <li><a href="button-group.html">Button Group</a></li>
+                                    <li><a href="accordion.html">Kelengkapan Kendaraan</a></li>
+                                    <li><a href="alert.html">Item kendaraan</a></li>
+                                    <li><a href="badge.html">onjek Transmisi</a></li>
+                                    <li><a href="button.html">Status Transmisi</a></li>
+                                    <li><a href="button-group.html">kendaraan</a></li>
             
                                 </ul>
                             </li>
@@ -350,6 +350,11 @@
     <!-- others plugins -->
     <script src="{{asset('assets/js/plugins.js')}}"></script>
     <script src="{{asset('assets/js/scripts.js')}}"></script>
+
+    <!-- datatable-->
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+@yield('script')
 </body>
 
 </html>
