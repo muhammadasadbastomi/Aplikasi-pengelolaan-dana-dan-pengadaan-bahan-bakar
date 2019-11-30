@@ -16,7 +16,7 @@ class CreateKendaraansTable extends Migration
         Schema::create('kendaraans', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('uuid')->nullable();
-            $table->unsignedBigInteger('karyawan_id');
+            $table->unsignedbigInteger('karyawan_id');
             $table->string('nopol')->length(10);
             $table->string('merk')->length(100);
             $table->string('tipe')->length(50);
