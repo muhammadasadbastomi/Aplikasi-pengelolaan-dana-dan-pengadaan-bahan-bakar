@@ -48,7 +48,7 @@
                     <nav>
                         <ul class="metismenu" id="menu">
                             <li>
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-pie-chart"></i><span>Data karyawan</span></a>
+                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-user"></i><span>Data karyawan</span></a>
                                 <ul class="collapse">
                                     <li><a href="{{Route('bidangIndex')}}">Bidang</a></li>
                                     <li><a href="linechart.html">Seksi Bidang</a></li>
@@ -56,7 +56,7 @@
                                 </ul>
                             </li>
                             <li>
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-palette"></i><span>Data Kendaraan</span></a>
+                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-car"></i><span>Data Kendaraan</span></a>
                                 <ul class="collapse">
                                     <li><a href="accordion.html">Kelengkapan Kendaraan</a></li>
                                     <li><a href="alert.html">Item kendaraan</a></li>
@@ -131,22 +131,6 @@
                     </div>
                 </div>
             </div>
-            <!-- header area end -->
-            <!-- page title area start -->
-            <div class="page-title-area">
-                <div class="row align-items-center">
-                    <div class="col-sm-6">
-                        <div class="breadcrumbs-area clearfix">
-                            <h4 class="page-title pull-left">Dashboard</h4>
-                            <ul class="breadcrumbs pull-left">
-                                <li><a href="index.html">Home</a></li>
-                                <li><span>Invoice</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- content here -->
          @yield('content')
         </div>
         <!-- main content area end -->
@@ -346,14 +330,11 @@
     <script src="{{asset('assets/js/metisMenu.min.js')}}"></script>
     <script src="{{asset('assets/js/jquery.slimscroll.min.js')}}"></script>
     <script src="{{asset('assets/js/jquery.slicknav.min.js')}}"></script>
-
     <!-- others plugins -->
     <script src="{{asset('assets/js/plugins.js')}}"></script>
     <script src="{{asset('assets/js/scripts.js')}}"></script>
-
     <!-- datatable-->
-<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+    <script src="{{asset('assets/js/datatable.min.js')}}"></script>
 @yield('script')
 </body>
 
