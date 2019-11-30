@@ -12,9 +12,8 @@ class Karyawan extends Model
     protected $hidden = [
         'id', 'user_id'
     ];
-    
+
     public function user(){
       return $this->HasOne('App\User');
     }
-}
 }
