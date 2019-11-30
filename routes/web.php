@@ -11,6 +11,13 @@
 |
 */
 
+Route::namespace('API')->prefix('api')->name('API.')->group(function(){
+    Route::prefix('karyawan')->name('karyawan.')->group(function(){
+            Route::get('', 'KaryawanController@get')->name('get');
+    });
+
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
