@@ -28,6 +28,11 @@ Route::get('/admin/index', 'adminController@index')
 // Route Bidang
 Route::get('/bidang/index', 'adminController@bidangIndex')
         ->name('bidangIndex');
+//Route Seksi Bidang
+// Route Bidang
+Route::get('/seksi/index', 'adminController@seksiIndex')
+        ->name('seksiIndex');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

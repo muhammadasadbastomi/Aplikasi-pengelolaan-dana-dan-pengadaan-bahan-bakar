@@ -51,7 +51,7 @@
                                 <a href="javascript:void(0)" aria-expanded="true"><i class="ti-user"></i><span>Data karyawan</span></a>
                                 <ul class="collapse">
                                     <li><a href="{{Route('bidangIndex')}}">Bidang</a></li>
-                                    <li><a href="linechart.html">Seksi Bidang</a></li>
+                                    <li><a href="{{Route('seksiIndex')}}">Seksi Bidang</a></li>
                                     <li><a href="piechart.html">Karyawan</a></li>
                                 </ul>
                             </li>

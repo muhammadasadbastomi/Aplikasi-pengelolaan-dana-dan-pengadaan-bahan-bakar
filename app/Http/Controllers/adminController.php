@@ -15,4 +15,9 @@ class adminController extends Controller
 
         return view('admin.bidang.index');
     }
+
+    public function seksiIndex(){
+
+        return view('admin.seksi.index');
+    }
 }

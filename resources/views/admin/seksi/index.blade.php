@@ -6,7 +6,7 @@
         <div class="col-12 mt-5">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="header-title">Tabel data bidang</h4>
+                    <h4 class="header-title">Tabel data Seksi Bidang</h4>
                     <div class="text-right">
                         <button href="" class="btn btn-rounded btn-success " id="tambah" >+ tambah data</button>
                         <a href="" class="btn btn-rounded btn-primary " style="margin-right:5px;"><i class="ti-printer"></i> cetak data</a>
@@ -16,8 +16,9 @@
                         <table id="example" class="table table-striped table-bordered text-center" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>Kode Bidang</th>
-                                    <th>Nama Bidang</th>
+                                    <th>Kode Seksi Bidang</th>
+                                    <th>Nama Seksi</th>
+                                    <th>Bidang</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -25,6 +26,7 @@
                                 <tr>
                                     <td>LLAJ12</td>
                                     <td>Rekayasa Lalu Lintas</td>
+                                    <td>LLAJ</td>
                                     <td>
                                         <a href=""class="btn btn-rounded btn-info"> <i class="ti-pencil"></i> </a>
                                         <a href=""class="btn btn-rounded btn-danger"> <i class="ti-trash"></i> </a>
@@ -33,8 +35,9 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th>Kode Bidang</th>
-                                    <th>Nama Bidang</th>
+                                    <th>Kode Seksi Bidang</th>
+                                    <th>Nama Seksi</th>
+                                    <th>Bidang</th>
                                     <th>Aksi</th>
                                 </tr>
                             </tfoot>
@@ -59,8 +62,8 @@
             <div class="modal-body">
                 <form  method="post" action="">
                     <div class="form-group"><input type="hidden" id="id" name="id"  class="form-control"></div>
-                    <div class="form-group"><label  class=" form-control-label">Kode Seksi</label><input type="text" id="kd_seksi" name="kd_seksi"  class="form-control"></div>
-                    <div class="form-group"><label  class=" form-control-label">Nama Seksi</label><input type="text" id="nm_seksi" name="nm_bidang"  class="form-control"></div>
+                    <div class="form-group"><label  class=" form-control-label">Kode Bidang</label><input type="text" id="kd_bidang" name="kd_bidang"  class="form-control"></div>
+                    <div class="form-group"><label  class=" form-control-label">Nama Bidang</label><input type="text" id="nm_bidang" name="nm_bidang"  class="form-control"></div>
             <div class="modal-footer">
                     <button type="button" class="btn " data-dismiss="modal"> <i class="ti-close"></i> Batal</button>
                     <button id="btn-form" type="submit" class="btn btn-primary"><i class="ti-save"></i> Simpan</button>
@@ -79,8 +82,8 @@
 
             $('#tambah').click(function(){
                 $('.modal-title').text('Tambah Data');
-                $('#kd_seksi').val('');
-                $('#nm_seksi').val('');  
+                $('#kd_bidang').val('');
+                $('#nm_bidang').val('');  
                 $('#btn-form').text('Simpan Data');
                 $('#mediumModal').modal('show');
             })
