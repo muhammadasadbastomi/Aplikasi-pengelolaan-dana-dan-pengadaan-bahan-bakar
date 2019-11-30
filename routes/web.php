@@ -17,3 +17,7 @@ Route::get('/', function () {
 
 Route::get('/admin/index', 'adminController@index')
         ->name('adminIndex');
+
+// Route Bidang
+Route::get('/bidang/index', 'adminController@bidangIndex')
+        ->name('bidangIndex');

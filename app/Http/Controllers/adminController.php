@@ -10,4 +10,9 @@ class adminController extends Controller
 
         return view('admin.index');
     }
+
+    public function bidangIndex(){
+
+        return view('admin.bidang.index');
+    }
 }
