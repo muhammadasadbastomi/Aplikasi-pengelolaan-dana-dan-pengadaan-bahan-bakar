@@ -59,10 +59,10 @@
                                 <a href="javascript:void(0)" aria-expanded="true"><i class="ti-car"></i><span>Data Kendaraan</span></a>
                                 <ul class="collapse">
                                     <li><a href="{{Route('itemKendaraanIndex')}}">Item kendaraan</a></li>
-                                    <li><a href="{{Route('kelengkapanKendaraanIndex')}}">Kelengkapan Kendaraan</a></li>
-                                    <li><a href="badge.html">onjek Transmisi</a></li>
-                                    <li><a href="button.html">Status Transmisi</a></li>
+                                    <li><a href="{{Route('objekTransmisiIndex')}}">objek Transmisi</a></li>
                                     <li><a href="button-group.html">kendaraan</a></li>
+                                    <li><a href="{{Route('kelengkapanKendaraanIndex')}}">Kelengkapan Kendaraan</a></li>
+                                    <li><a href="button.html">Status Transmisi</a></li>
             
                                 </ul>
                             </li>

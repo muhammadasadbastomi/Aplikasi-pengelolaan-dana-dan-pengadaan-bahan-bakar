@@ -31,4 +31,9 @@ class adminController extends Controller
         return view('admin.itemKendaraan.index');
     }
 
+    public function objekTransmisiIndex(){
+
+        return view('admin.objekTransmisi.index');
+    }
+
 }

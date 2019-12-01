@@ -32,12 +32,18 @@ Route::get('/bidang/index', 'adminController@bidangIndex')
 //Route Seksi Bidang
 Route::get('/seksi/index', 'adminController@seksiIndex')
         ->name('seksiIndex');
-//
+
+//item kendaraan
+Route::get('/itemKendaraan/index', 'adminController@itemKendaraanIndex')
+        ->name('itemKendaraanIndex');
+
+//kelengkapan kendaraan
 Route::get('/kelengkapanKendaraan/index', 'adminController@kelengkapanKendaraanIndex')
         ->name('kelengkapanKendaraanIndex');
 
-Route::get('/itemKendaraan/index', 'adminController@itemKendaraanIndex')
-        ->name('itemKendaraanIndex');
+//Objek Transmisi
+Route::get('/objektransmisi/index', 'adminController@objekTransmisiIndex')
+        ->name('objekTransmisiIndex');
 
 Auth::routes();
 
