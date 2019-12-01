@@ -14,8 +14,9 @@
 Route::namespace('API')->prefix('api')->name('API.')->group(function(){
     Route::prefix('karyawan')->name('karyawan.')->group(function(){
             Route::get('', 'KaryawanController@get')->name('get');
-            Route::get('uuid', 'KaryawanController@find')->name('find');
+            Route::get('{uuid}', 'KaryawanController@find')->name('find');
             Route::post('', 'KaryawanController@create')->name('create');
+            Route::put('{uuid}', 'KaryawanController@update')->name('update');
 
     });
 
