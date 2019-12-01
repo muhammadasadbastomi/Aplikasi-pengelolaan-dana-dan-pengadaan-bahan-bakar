@@ -25,4 +25,10 @@ class adminController extends Controller
 
         return view('admin.kelengkapanKendaraan.index');
     }
+
+    public function itemKendaraanIndex(){
+
+        return view('admin.itemKendaraan.index');
+    }
+
 }

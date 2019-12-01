@@ -35,6 +35,10 @@ Route::get('/seksi/index', 'adminController@seksiIndex')
 //
 Route::get('/kelengkapanKendaraan/index', 'adminController@kelengkapanKendaraanIndex')
         ->name('kelengkapanKendaraanIndex');
+
+Route::get('/itemKendaraan/index', 'adminController@itemKendaraanIndex')
+        ->name('itemKendaraanIndex');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
