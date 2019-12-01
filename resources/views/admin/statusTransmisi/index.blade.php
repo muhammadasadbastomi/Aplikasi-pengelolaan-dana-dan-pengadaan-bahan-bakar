@@ -6,7 +6,7 @@
         <div class="col-12 mt-5">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="header-title">Tabel data bidang</h4>
+                    <h4 class="header-title">Tabel Data Status Transmisi</h4>
                     <div class="text-right">
                         <button href="" class="btn btn-rounded btn-success " id="tambah" >+ tambah data</button>
                         <a href="" class="btn btn-rounded btn-primary " style="margin-right:5px;"><i class="ti-printer"></i> cetak data</a>
@@ -16,15 +16,17 @@
                         <table id="example" class="table table-striped table-bordered text-center" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>Kode Bidang</th>
-                                    <th>Nama Bidang</th>
+                                    <th>Kendaraan</th>
+                                    <th>Objek Transmisi</th>
+                                    <th>Status</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>LLAJ12</td>
-                                    <td>Rekayasa Lalu Lintas</td>
+                                    <td>DA 6402 PAD</td>
+                                    <td>Kompling</td>
+                                    <td>Cukup</td>
                                     <td>
                                         <a href=""class="btn btn-rounded btn-info"> <i class="ti-pencil"></i> </a>
                                         <a href=""class="btn btn-rounded btn-danger"> <i class="ti-trash"></i> </a>
@@ -33,8 +35,9 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th>Kode Bidang</th>
-                                    <th>Nama Bidang</th>
+                                    <th>Kendaraan</th>
+                                    <th>Objek Transmisi</th>
+                                    <th>Status</th>
                                     <th>Aksi</th>
                                 </tr>
                             </tfoot>
@@ -59,8 +62,30 @@
             <div class="modal-body">
                 <form  method="post" action="">
                     <div class="form-group"><input type="hidden" id="id" name="id"  class="form-control"></div>
-                    <div class="form-group"><label  class=" form-control-label">Kode Seksi</label><input type="text" id="kd_seksi" name="kd_seksi"  class="form-control"></div>
-                    <div class="form-group"><label  class=" form-control-label">Nama Seksi</label><input type="text" id="nm_seksi" name="nm_bidang"  class="form-control"></div>
+                    <div class="form-group"><label  class=" form-control-label">Pilih Kendaraan</label>
+                        <select class="form-control" name="kendaraan_id" id="kendaraan_id">
+                            <option value="">ini ngambil dari dara kendaraan</option>
+                        </select>
+                    </div>
+                    <div class="form-group"><label  class=" form-control-label">Pilih objek Transmisi</label>
+                        <select class="form-control" name="kendaraan_id" id="kendaraan_id">
+                            <option value="">ini ngambil dari data objek transmisi</option>
+                        </select>
+                    </div>
+                    <div class="form-group"><label  class=" form-control-label">Status</label><br>          
+                        <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" checked id="customRadio4" name="customRadio2" class="custom-control-input">
+                        <label class="custom-control-label" for="customRadio4">Bagus</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="customRadio5" name="customRadio2" class="custom-control-input">
+                        <label class="custom-control-label" for="customRadio5">Cukup</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio"  id="customRadio6" name="customRadio2" class="custom-control-input">
+                        <label class="custom-control-label" for="customRadio6">Kurang</label>
+                    </div>
+                    </div>
             <div class="modal-footer">
                     <button type="button" class="btn " data-dismiss="modal"> <i class="ti-close"></i> Batal</button>
                     <button id="btn-form" type="submit" class="btn btn-primary"><i class="ti-save"></i> Simpan</button>

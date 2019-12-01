@@ -28,6 +28,26 @@ Route::get('/admin/index', 'adminController@index')
 // Route Bidang
 Route::get('/bidang/index', 'adminController@bidangIndex')
         ->name('bidangIndex');
+
+//Route Seksi Bidang
+Route::get('/seksi/index', 'adminController@seksiIndex')
+        ->name('seksiIndex');
+
+//item kendaraan
+Route::get('/itemKendaraan/index', 'adminController@itemKendaraanIndex')
+        ->name('itemKendaraanIndex');
+
+//kelengkapan kendaraan
+Route::get('/kelengkapanKendaraan/index', 'adminController@kelengkapanKendaraanIndex')
+        ->name('kelengkapanKendaraanIndex');
+
+//Objek Transmisi
+Route::get('/objektransmisi/index', 'adminController@objekTransmisiIndex')
+        ->name('objekTransmisiIndex');
+//Objek Transmisi
+Route::get('/statusTransmisi/index', 'adminController@statusTransmisiIndex')
+        ->name('statusTransmisiIndex');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

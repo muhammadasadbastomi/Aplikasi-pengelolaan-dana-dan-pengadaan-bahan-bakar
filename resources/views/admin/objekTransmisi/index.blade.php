@@ -6,7 +6,7 @@
         <div class="col-12 mt-5">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="header-title">Tabel data bidang</h4>
+                    <h4 class="header-title">Tabel data Objek Transmisi</h4>
                     <div class="text-right">
                         <button href="" class="btn btn-rounded btn-success " id="tambah" >+ tambah data</button>
                         <a href="" class="btn btn-rounded btn-primary " style="margin-right:5px;"><i class="ti-printer"></i> cetak data</a>
@@ -16,15 +16,15 @@
                         <table id="example" class="table table-striped table-bordered text-center" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>Kode Bidang</th>
-                                    <th>Nama Bidang</th>
+                                    <th>Kode Transmisi</th>
+                                    <th>Jenis</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>LLAJ12</td>
-                                    <td>Rekayasa Lalu Lintas</td>
+                                    <td>12gf</td>
+                                    <td>Kopling</td>
                                     <td>
                                         <a href=""class="btn btn-rounded btn-info"> <i class="ti-pencil"></i> </a>
                                         <a href=""class="btn btn-rounded btn-danger"> <i class="ti-trash"></i> </a>
@@ -33,8 +33,8 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th>Kode Bidang</th>
-                                    <th>Nama Bidang</th>
+                                    <th>Kode Transmisi</th>
+                                    <th>Jenis</th>
                                     <th>Aksi</th>
                                 </tr>
                             </tfoot>
@@ -59,8 +59,8 @@
             <div class="modal-body">
                 <form  method="post" action="">
                     <div class="form-group"><input type="hidden" id="id" name="id"  class="form-control"></div>
-                    <div class="form-group"><label  class=" form-control-label">Kode Seksi</label><input type="text" id="kd_seksi" name="kd_seksi"  class="form-control"></div>
-                    <div class="form-group"><label  class=" form-control-label">Nama Seksi</label><input type="text" id="nm_seksi" name="nm_bidang"  class="form-control"></div>
+                    <div class="form-group"><label  class=" form-control-label">Kode Transmisi</label><input type="text" id="kd_transmisi" name="kd_transmisi"  class="form-control"></div>
+                    <div class="form-group"><label  class=" form-control-label">Jenis Transmisi</label><input type="text" id="jenis_transmisi" name="jenis_transmisi"  class="form-control"></div>
             <div class="modal-footer">
                     <button type="button" class="btn " data-dismiss="modal"> <i class="ti-close"></i> Batal</button>
                     <button id="btn-form" type="submit" class="btn btn-primary"><i class="ti-save"></i> Simpan</button>
