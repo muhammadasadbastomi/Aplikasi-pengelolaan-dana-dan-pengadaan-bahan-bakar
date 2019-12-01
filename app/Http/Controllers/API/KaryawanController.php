@@ -23,4 +23,20 @@ class KaryawanController extends APIController
         return $this->returnController("ok", $karyawan);
     }
 
+    public function find($uuid){
+        $id = HCrypt::decrypt($uuid);
+        if (!$id) {
+            return $this->returnController("error", "failed decrypt uuid");
+        }
+        $karyawan = Redis::get("karyawan:$id");
+        if (!$karyawan) {
+            $karyawan = karyawan::find($id);
+            if (!$karyawan){
+                return $this->returnController("error", "failed find data karyawan");
+            }
+            Redis::set("karyawan:$id", $karyawan);
+        }
+        return $this->returnController("ok", $karyawan);
+    }
+
 }
