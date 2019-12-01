@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'uuid', 'name', 'email', 'password','foto',
     ];
 
     /**
@@ -36,4 +36,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function setRoleAttribute($value)
+    {
+        $this->attributes['role'] = 2;
+    }
+
+    public function karyawan(){
+        return $this->HasOne('App\Karyawan');
+      }
+
 }
