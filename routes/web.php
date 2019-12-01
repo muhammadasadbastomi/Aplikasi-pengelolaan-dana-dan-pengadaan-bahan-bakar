@@ -44,6 +44,9 @@ Route::get('/kelengkapanKendaraan/index', 'adminController@kelengkapanKendaraanI
 //Objek Transmisi
 Route::get('/objektransmisi/index', 'adminController@objekTransmisiIndex')
         ->name('objekTransmisiIndex');
+//Objek Transmisi
+Route::get('/statusTransmisi/index', 'adminController@statusTransmisiIndex')
+        ->name('statusTransmisiIndex');
 
 Auth::routes();
 

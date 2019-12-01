@@ -36,4 +36,8 @@ class adminController extends Controller
         return view('admin.objekTransmisi.index');
     }
 
+    public function statusTransmisiIndex(){
+
+        return view('admin.statusTransmisi.index');
+    }
 }
