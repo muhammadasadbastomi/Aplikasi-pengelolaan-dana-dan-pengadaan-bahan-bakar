@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Invoice - srtdash</title>
+    <title>Dinas Kehutanan Prov Kalsel</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="assets/images/icon/favicon.ico">
     <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
@@ -40,7 +40,7 @@
         <div class="sidebar-menu">
             <div class="sidebar-header">
                 <div class="logo">
-                    <a href="index.html"><img src="{{asset('assets/images/icon/logo.png')}}" alt="logo"></a>
+                    <a href="/admin/index"><img src="{{asset('img/logo.png')}}" width="30" alt="logo"> <br> <label for="" class="text-light">Dishut prov Kalsel</label></a>
                 </div>
             </div>
             <div class="main-menu">
@@ -66,7 +66,7 @@
             
                                 </ul>
                             </li>
-                            <li><a href="maps.html"><i class="ti-map-alt"></i> <span>maps</span></a></li>
+                            <li><a href="maps.html"><i class="ti-map-alt"></i> <span>Pencairan</span></a></li>
                             <li class="active"><a href="invoice.html"><i class="ti-receipt"></i> <span>Invoice Summary</span></a></li>
                         </ul>
                     </nav>
