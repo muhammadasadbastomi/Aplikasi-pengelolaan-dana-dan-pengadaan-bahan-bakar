@@ -53,5 +53,37 @@ class KendaraanController extends APIController
         return $this->returnController("ok", $kendaraan);
     }
 
+    public function update($id, Request $req){
+        // $id = HCrypt::decrypt($uuid);
+        if (!$id) {
+            return $this->returnController("error", "failed decrypt uuid");
+        }
+        $kendaraan = Kendaraan::findOrFail($id);
+
+        $kendaraan->karyawan_id     = $req->karyawan_id;
+        $kendaraan->nopol    = $req->nopol;
+        $kendaraan->merk    = $req->merk;
+        $kendaraan->tipe    = $req->tipe;
+        $kendaraan->jenis    = $req->jenis;
+        $kendaraan->model    = $req->model;
+        $kendaraan->tahun_pembuatan    = $req->tahun_pembuatan;
+        $kendaraan->isi_silinder    = $req->isi_silinder;
+        $kendaraan->warna_kendaraan    = $req->warna_kendaraan;
+        $kendaraan->bahan_bakar    = $req->bahan_bakar;
+        $kendaraan->warna_tnkb    = $req->warna_tnkb;
+        $kendaraan->tahun_registrasi    = $req->tahun_registrasi;
+        $kendaraan->no_mesin    = $req->no_mesin;
+        $kendaraan->no_bpkb    = $req->no_bpkb;
+        $kendaraan->tercatat_kib    = $req->tercatat_kib;
+
+        $kendaraan->update();
+        if (!$kendaraan) {
+            return $this->returnController("error", "failed find data kendaraan");
+        }
+        Redis::del("kendaraan:all");
+        Redis::set("kendaraan:$id", $kendaraan);
+        return $this->returnController("ok", $kendaraan);
+    }
+
     
 }
