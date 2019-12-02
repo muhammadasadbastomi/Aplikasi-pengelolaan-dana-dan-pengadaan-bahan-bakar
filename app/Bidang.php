@@ -16,6 +16,6 @@ class Bidang extends Model
 
     public function seksi()
     {
-        return $this->HasMany('App\Seksi')
+        return $this->HasMany('App\Seksi');
     }
 }
