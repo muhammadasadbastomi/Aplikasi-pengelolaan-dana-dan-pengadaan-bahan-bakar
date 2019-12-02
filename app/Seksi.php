@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Seksi extends Model
 {
     protected $fillable = [
-        'uuid','kode_seksi','nama',
+        'uuid','bidang_id','kode_seksi','nama',
     ];
 
     protected $hidden = [
