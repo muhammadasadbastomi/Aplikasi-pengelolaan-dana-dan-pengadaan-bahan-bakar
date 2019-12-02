@@ -16,6 +16,6 @@ class Seksi extends Model
 
     public function bidang()
     {
-        return $this->HasMany('App\Bidang');
+        return $this->belongsTo('App\Bidang');
     }
 }
