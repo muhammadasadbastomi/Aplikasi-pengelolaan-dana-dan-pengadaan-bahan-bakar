@@ -85,5 +85,25 @@ class KendaraanController extends APIController
         return $this->returnController("ok", $kendaraan);
     }
 
+    public function delete($uuid){
+        $id = HCrypt::decrypt($uuid);
+        if (!$id) {
+            return $this->returnController("error", "failed decrypt uuid");
+        }
+        $kendaraan = Kendaraan::findOrFail($id);
+        if (!$kendaraan) {
+            return $this->returnController("error", "failed find data kendaraan");
+        }
+        // Need to check realational
+        // If there relation to other data, return error with message, this data has relation to other table(s)
+        $delete = $kendaraan->delete();
+        if (!$delete) {
+            return $this->returnController("error", "failed delete data kendaraan");
+        }
+        Redis::del("kendaraan:all");
+        Redis::del("kendaraan:$id");
+        return $this->returnController("ok", "success delete data kendaraan");
+    }
+
     
 }
