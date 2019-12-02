@@ -38,5 +38,20 @@ class KendaraanController extends APIController
         return $this->returnController("ok", $kendaraan);
     }
 
+    public function create(Request $req){
+        $kendaraan = Kendaraan::create($req->all());
+        //set uuid
+        $kendaraan_id = $kendaraan->id;
+        $uuid = HCrypt::encrypt($kendaraan_id);
+        $setuuid = kendaraan::findOrFail($kendaraan_id);
+        $setuuid->uuid = $uuid;
+        $setuuid->update();
+        if (!$kendaraan) {
+            return $this->returnController("error", "failed create data kendaraan");
+        }
+        Redis::del("kendaraan:all");
+        return $this->returnController("ok", $kendaraan);
+    }
+
     
 }
