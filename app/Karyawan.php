@@ -14,7 +14,7 @@ class Karyawan extends Model
     ];
 
     public function user(){
-      return $this->HasOne('App\User');
+      return $this->belongsTo('App\User');
     }
 
     public function kendaraan(){
