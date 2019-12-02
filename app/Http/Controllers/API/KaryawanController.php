@@ -15,7 +15,7 @@ class KaryawanController extends APIController
     public function get(){
         $karyawan = json_decode(redis::get("karyawan::all"));
         if (!$karyawan) {
-            $karyawan = karyawan::all();
+            $karyawan = karyawan::with('user')->get();
             if (!$karyawan) {
                 return $this->returnController("error", "failed get karyawan data");
             }
@@ -31,7 +31,7 @@ class KaryawanController extends APIController
         }
         $karyawan = Redis::get("karyawan:$id");
         if (!$karyawan) {
-            $karyawan = karyawan::find($id);
+            $karyawan = karyawan::with('user')->where('id',$id)->first();
             if (!$karyawan){
                 return $this->returnController("error", "failed find data karyawan");
             }
