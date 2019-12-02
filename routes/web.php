@@ -20,6 +20,14 @@ Route::namespace('API')->prefix('api')->name('API.')->group(function(){
             Route::delete('{uuid}', 'KaryawanController@delete')->name('delete');
     });
 
+    Route::prefix('kendaraan')->name('kendaraan.')->group(function(){
+        Route::get('', 'KendaraanController@get')->name('get');
+        Route::get('{uuid}', 'KendaraanController@find')->name('find');
+        Route::post('', 'KendaraanController@create')->name('create');
+        Route::put('{uuid}', 'KendaraanController@update')->name('update');
+        Route::delete('{uuid}', 'KendaraanController@delete')->name('delete');
+     });
+
 });
 
 Route::get('/', function () {
