@@ -32,7 +32,7 @@ class CreateKendaraansTable extends Migration
             $table->string('no_bpkb')->length(50);
             $table->string('tercatat_kib')->length(10);
             $table->timestamps();
-            $table->foreign('karyawan_id')->references('id')->on('karyawans')->onDelete('cascade');
+            $table->foreign('karyawan_id')->references('id')->on('karyawans');
         });
     }
 
