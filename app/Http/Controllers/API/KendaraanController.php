@@ -22,5 +22,21 @@ class KendaraanController extends APIController
     return $this->returnController("ok", $kendaraan);
     }
 
+    public function find($uuid){
+        $id = HCrypt::decrypt($uuid);
+        if (!$id) {
+            return $this->returnController("error", "failed decrypt uuid");
+        }
+        $kendaraan = Redis::get("kendaraan:$id");
+        if (!$kendaraan) {
+            $kendaraan = kendaraan::find($id);
+            if (!$kendaraan){
+                return $this->returnController("error", "failed find data kendaraan");
+            }
+            Redis::set("kendaraan:$id", $kendaraan);
+        }
+        return $this->returnController("ok", $kendaraan);
+    }
+
     
 }
