@@ -15,6 +15,11 @@ class CreateSeksisTable extends Migration
     {
         Schema::create('seksis', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedbigInteger('bidang_id');
+            $table->text('uuid')->nullable();
+            $table->string('kode_seksi')->length('25');
+            $table->string('nama')->length(255);
+            $table->foreign('bidang_id')->references('id')->on('bidangs')->onDelete('cascade');
             $table->timestamps();
         });
     }

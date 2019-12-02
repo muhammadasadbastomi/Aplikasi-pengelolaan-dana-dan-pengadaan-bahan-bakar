@@ -19,6 +19,13 @@ Route::namespace('API')->prefix('api')->name('API.')->group(function(){
         Route::put('{uuid}', 'BidangController@update')->name('update');
         Route::delete('{uuid}', 'BidangController@delete')->name('delete');
         });
+    Route::prefix('seksi')->name('seksi.')->group(function(){
+        Route::get('', 'SeksiController@get')->name('get');
+        Route::get('{uuid}', 'SeksiController@find')->name('find');
+        Route::post('', 'SeksiController@create')->name('create');
+        Route::put('{uuid}', 'SeksiController@update')->name('update');
+        Route::delete('{uuid}', 'SeksiController@delete')->name('delete');
+        });
     Route::prefix('karyawan')->name('karyawan.')->group(function(){
         Route::get('', 'KaryawanController@get')->name('get');
         Route::get('{uuid}', 'KaryawanController@find')->name('find');
