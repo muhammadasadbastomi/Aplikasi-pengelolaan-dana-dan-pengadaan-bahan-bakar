@@ -12,12 +12,19 @@
 */
 
 Route::namespace('API')->prefix('api')->name('API.')->group(function(){
+    Route::prefix('bidang')->name('bidang.')->group(function(){
+        Route::get('', 'BidangController@get')->name('get');
+        Route::get('{uuid}', 'BidangController@find')->name('find');
+        Route::post('', 'BidangController@create')->name('create');
+        Route::put('{uuid}', 'BidangController@update')->name('update');
+        Route::delete('{uuid}', 'BidangController@delete')->name('delete');
+        });
     Route::prefix('karyawan')->name('karyawan.')->group(function(){
-            Route::get('', 'KaryawanController@get')->name('get');
-            Route::get('{uuid}', 'KaryawanController@find')->name('find');
-            Route::post('', 'KaryawanController@create')->name('create');
-            Route::put('{uuid}', 'KaryawanController@update')->name('update');
-            Route::delete('{uuid}', 'KaryawanController@delete')->name('delete');
+        Route::get('', 'KaryawanController@get')->name('get');
+        Route::get('{uuid}', 'KaryawanController@find')->name('find');
+        Route::post('', 'KaryawanController@create')->name('create');
+        Route::put('{uuid}', 'KaryawanController@update')->name('update');
+        Route::delete('{uuid}', 'KaryawanController@delete')->name('delete');
     });
 
     Route::prefix('kendaraan')->name('kendaraan.')->group(function(){
