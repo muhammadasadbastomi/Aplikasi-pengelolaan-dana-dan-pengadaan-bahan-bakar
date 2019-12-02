@@ -53,8 +53,8 @@ class KendaraanController extends APIController
         return $this->returnController("ok", $kendaraan);
     }
 
-    public function update($id, Request $req){
-        // $id = HCrypt::decrypt($uuid);
+    public function update($uuid, Request $req){
+        $id = HCrypt::decrypt($uuid);
         if (!$id) {
             return $this->returnController("error", "failed decrypt uuid");
         }
@@ -75,7 +75,7 @@ class KendaraanController extends APIController
         $kendaraan->no_mesin    = $req->no_mesin;
         $kendaraan->no_bpkb    = $req->no_bpkb;
         $kendaraan->tercatat_kib    = $req->tercatat_kib;
-
+        
         $kendaraan->update();
         if (!$kendaraan) {
             return $this->returnController("error", "failed find data kendaraan");
