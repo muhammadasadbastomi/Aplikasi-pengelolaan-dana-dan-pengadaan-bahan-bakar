@@ -17,7 +17,7 @@ class CreateKendaraansTable extends Migration
             $table->bigIncrements('id');
             $table->text('uuid')->nullable();
             $table->unsignedbigInteger('karyawan_id');
-            $table->string('nopol')->length(10);
+            $table->string('nopol')->length(20);
             $table->string('merk')->length(100);
             $table->string('tipe')->length(50);
             $table->string('jenis')->length(50);
