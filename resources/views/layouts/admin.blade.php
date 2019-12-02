@@ -150,6 +150,8 @@
     <script src="{{asset('assets/js/scripts.js')}}"></script>
     <!-- datatable-->
     <script src="{{asset('assets/js/datatable.min.js')}}"></script>
+    <script src="{{asset('/js/sweetalert/sweetalert.all.min.js')}}"></script>
+
 @yield('script')
 </body>
 
