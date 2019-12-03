@@ -66,7 +66,6 @@
  </div> 
 @endsection
 @section('script')
-  
 <script>
 function hapus(uuid, nama){
     var csrf_token=$('meta[name="csrf_token"]').attr('content');
@@ -203,6 +202,5 @@ $(document).ready(function() {
         }
     } );
     } );
-</script>
     </script>
 @endsection
