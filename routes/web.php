@@ -59,6 +59,12 @@ Route::get('/bidang/index', 'adminController@bidangIndex')
 Route::get('/seksi/index', 'adminController@seksiIndex')
         ->name('seksiIndex');
 
+
+//Route Seksi Bidang
+Route::get('/karyawan/index', 'adminController@karyawanIndex')
+        ->name('karyawanIndex');
+
+
 //item kendaraan
 Route::get('/itemKendaraan/index', 'adminController@itemKendaraanIndex')
         ->name('itemKendaraanIndex');

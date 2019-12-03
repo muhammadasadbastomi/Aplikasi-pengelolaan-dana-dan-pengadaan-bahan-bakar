@@ -21,6 +21,11 @@ class adminController extends Controller
         return view('admin.seksi.index');
     }
 
+    public function karyawanIndex(){
+
+        return view('admin.karyawan.index');
+    }
+
     public function kelengkapanKendaraanIndex(){
 
         return view('admin.kelengkapanKendaraan.index');
