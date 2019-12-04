@@ -16,6 +16,7 @@ class CreateKaryawansTable extends Migration
         Schema::create('karyawans', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedbigInteger('user_id');
+            $table->unsignedbigInteger('seksi_id');
             $table->text('uuid')->nullable();
             $table->string('NIP')->length('25');
             $table->string('tempat_lahir')->length(255);
@@ -23,6 +24,7 @@ class CreateKaryawansTable extends Migration
             $table->string('alamat')->length(255);
             $table->string('telepon')->length(13);
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('seksi_id')->references('id')->on('seksis')->onDelete('cascade');
             $table->timestamps();
         });
     }
