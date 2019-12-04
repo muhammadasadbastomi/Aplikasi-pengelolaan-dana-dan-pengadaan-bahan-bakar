@@ -13,4 +13,9 @@ class Kelengkapan extends Model
     protected $hidden = [
         'id','kendaraan_id','item_kendaraan_id'
     ];
+
+    public function kendaraan()
+    {
+        return $this->belongsTo('App\Kendaraan');
+    }
 }
