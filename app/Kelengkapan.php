@@ -18,4 +18,9 @@ class Kelengkapan extends Model
     {
         return $this->belongsTo('App\Kendaraan');
     }
+
+    public function item()
+    {
+        return $this->belongsTo('App\Item');
+    }
 }
