@@ -57,7 +57,7 @@
                     <div class="form-group"><label  class=" form-control-label">Nama seksi</label><input type="text" id="nama" name="nama"  class="form-control"></div>
                     <div class="form-group"><label  class=" form-control-label">Bidang</label>
                     <select name="bidang_id" class="form-control" id="bidang_id">
-                    
+                    <option value="">-- pilih bidang --</option>
                     </select>
                     </div>
             <div class="modal-footer">
