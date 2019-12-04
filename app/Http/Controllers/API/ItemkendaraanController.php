@@ -52,4 +52,23 @@ class ItemkendaraanController extends APIController
         Redis::del("item_kendaraan:all");
         return $this->returnController("ok", $item_kendaraan);
     }
+
+    public function update($uuid, Request $req){
+        $id = HCrypt::decrypt($uuid);
+        if (!$id) {
+            return $this->returnController("error", "failed decrypt uuid");
+        }
+        $item_kendaraan = item_kendaraan::findOrFail($id);
+
+        $item_kendaraan->kode_item    = $req->kode_item;
+        $item_kendaraan->nama    = $req->nama;
+        
+        $item_kendaraan->update();
+        if (!$item_kendaraan) {
+            return $this->returnController("error", "failed find data item_kendaraan");
+        }
+        Redis::del("item_kendaraan:all");
+        Redis::set("item_kendaraan:$id", $item_kendaraan);
+        return $this->returnController("ok", $item_kendaraan);
+    }
 }
