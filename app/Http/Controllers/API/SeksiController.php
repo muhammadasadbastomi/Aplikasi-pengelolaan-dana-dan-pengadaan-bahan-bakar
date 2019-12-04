@@ -41,7 +41,13 @@ class SeksiController extends APIController
     }
 
     public function create(Request $req){
-        $seksi = Seksi::create($req->all());
+        // $seksi = Seksi::create($req->all());
+        $seksi = new Seksi;
+        $seksi->kode_seksi = $req->kode_seksi;
+        $seksi->nama = $req->nama;
+        // decrypt bidang id
+        $seksi->bidang_id = Hcrypt::decrypt($req->bidang_id);
+        $seksi->save();
         //set uuid
         $seksi_id = $seksi->id;
         $uuid = HCrypt::encrypt($seksi_id);

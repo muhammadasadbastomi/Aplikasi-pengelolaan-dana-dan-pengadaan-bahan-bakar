@@ -83,7 +83,7 @@ function getBidang(){
             success : function(returnData) {
                 $.each(returnData.data, function (index, value) {
 				$('#bidang_id').append(
-					'<option value="'+value.UUID+'">'+value.nama+'</option>'
+					'<option value="'+value.uuid+'">'+value.nama+'</option>'
 				)
 			})
         }

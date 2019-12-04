@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Hcrypt;
 
 class Seksi extends Model
 {
@@ -18,4 +19,9 @@ class Seksi extends Model
     {
         return $this->belongsTo('App\Bidang');
     }
+
+    // public function setBidang_idAttribute($value)
+    // {
+    //     $this->attributes['bidang_id'] = Hcrypt::decrypt($value);
+    // }
 }
