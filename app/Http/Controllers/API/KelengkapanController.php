@@ -42,8 +42,10 @@ class KelengkapanController extends APIController
         $kelengkapan = new kelengkapan;
         $kelengkapan->status = $req->status;
         // decrypt kendaraan & item kendaraan id
-        $kelengkapan->kendaraan_id = Hcrypt::decrypt($req->kendaraan_id);
-        $kelengkapan->item_kendaraan_id = Hcrypt::decrypt($req->item_kendaraan_id);
+        // $kelengkapan->kendaraan_id = Hcrypt::decrypt($req->kendaraan_id);
+        // $kelengkapan->item_kendaraan_id = Hcrypt::decrypt($req->item_kendaraan_id);
+        $kelengkapan->kendaraan_id = $req->kendaraan_id;
+        $kelengkapan->item_kendaraan_id = $req->item_kendaraan_id;
         $kelengkapan->save();
         //set uuid
         $kelengkapan_id = $kelengkapan->id;
