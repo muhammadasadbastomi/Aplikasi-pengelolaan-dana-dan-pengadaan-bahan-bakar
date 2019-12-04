@@ -10,7 +10,7 @@ class Item_kendaraan extends Model
         'uuid','kode_item', 'nama'
     ];
 
-    protected $fillable = [
+    protected $hidden = [
         'id'
     ];
 }
