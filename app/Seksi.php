@@ -20,6 +20,11 @@ class Seksi extends Model
         return $this->belongsTo('App\Bidang');
     }
 
+    public function karyawan()
+    {
+        return $this->HasMany('App\Karyawan');
+    }
+
     // public function setBidang_idAttribute($value)
     // {
     //     $this->attributes['bidang_id'] = Hcrypt::decrypt($value);
