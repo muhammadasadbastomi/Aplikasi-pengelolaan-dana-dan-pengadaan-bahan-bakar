@@ -31,7 +31,7 @@ class ItemkendaraanController extends APIController
         if (!$item_kendaraan) {
             $item_kendaraan = item_kendaraan::find($id);
             if (!$item_kendaraan){
-                return $this->returnController("error", "failed find data item_kendaraan");
+                return $this->returnController("error", "failed find data item kendaraan");
             }
             Redis::set("item_kendaraan:$id", $item_kendaraan);
         }
@@ -47,7 +47,7 @@ class ItemkendaraanController extends APIController
         $setuuid->uuid = $uuid;
         $setuuid->update();
         if (!$item_kendaraan) {
-            return $this->returnController("error", "failed create data item_kendaraan");
+            return $this->returnController("error", "failed create data item kendaraan");
         }
         Redis::del("item_kendaraan:all");
         return $this->returnController("ok", $item_kendaraan);
@@ -65,7 +65,7 @@ class ItemkendaraanController extends APIController
         
         $item_kendaraan->update();
         if (!$item_kendaraan) {
-            return $this->returnController("error", "failed find data item_kendaraan");
+            return $this->returnController("error", "failed find data item kendaraan");
         }
         Redis::del("item_kendaraan:all");
         Redis::set("item_kendaraan:$id", $item_kendaraan);
@@ -79,16 +79,16 @@ class ItemkendaraanController extends APIController
         }
         $item_kendaraan = item_kendaraan::findOrFail($id);
         if (!$item_kendaraan) {
-            return $this->returnController("error", "failed find data item_kendaraan");
+            return $this->returnController("error", "failed find data item kendaraan");
         }
         // Need to check realational
         // If there relation to other data, return error with message, this data has relation to other table(s)
         $delete = $item_kendaraan->delete();
         if (!$delete) {
-            return $this->returnController("error", "failed delete data item_kendaraan");
+            return $this->returnController("error", "failed delete data item kendaraan");
         }
         Redis::del("item_kendaraan:all");
         Redis::del("item_kendaraan:$id");
-        return $this->returnController("ok", "success delete data item_kendaraan");
+        return $this->returnController("ok", "success delete data item kendaraan");
     }
 }
