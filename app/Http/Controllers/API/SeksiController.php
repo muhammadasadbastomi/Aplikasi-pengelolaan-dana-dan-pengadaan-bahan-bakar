@@ -69,6 +69,7 @@ class SeksiController extends APIController
         $seksi = seksi::findOrFail($id);
         $seksi->kode_seksi     = $req->kode_seksi;
         $seksi->nama    = $req->nama;
+        $seksi->bidang_id = Hcrypt::decrypt($req->bidang_id);
         $seksi->update();
         if (!$seksi) {
             return $this->returnController("error", "failed find data seksi");
