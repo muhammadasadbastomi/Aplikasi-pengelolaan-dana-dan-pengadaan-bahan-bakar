@@ -52,7 +52,19 @@ class KaryawanController extends APIController
         $setuuid->password = $password;
         $setuuid->update();
 
-        $karyawan = $user->karyawan()->create($req->all());
+        'uuid', 'NIP', 'tempat_lahir', 'tanggal_lahir', 'alamat', 'telepon'
+    ];
+    protected $hidden = [
+        'id', 'user_id'
+    ];
+        $karyawan = new Karyawan;
+        $karyawan->seksi_id     = Hcrypt::decrypt($req->seksi_id);
+        $karyawan->NIP     = $req->NIP;
+        $karyawan->tempat_lahir    = $req->tempat_lahir;
+        $karyawan->tanggal_lahir    = $req->tanggal_lahir;
+        $karyawan->alamat    = $req->alamat;
+        $karyawan->telepon    = $req->telepon;
+        $karyawan->save();
         //set uuid
         $karyawan_id = $karyawan->id;
         $uuid = HCrypt::encrypt($karyawan_id);
@@ -96,6 +108,7 @@ class KaryawanController extends APIController
             }
            $user->update();
            $karyawan->NIP     = $req->NIP;
+           $karyawan->seksi_id     = Hcrypt::decrypt($req->seksi_id);
            $karyawan->tempat_lahir    = $req->tempat_lahir;
            $karyawan->tanggal_lahir    = $req->tanggal_lahir;
            $karyawan->alamat    = $req->alamat;
