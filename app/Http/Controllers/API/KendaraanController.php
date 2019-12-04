@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Redis;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Kendaraan;
+use App\Karyawan;
 use HCrypt;
 
 class KendaraanController extends APIController
@@ -39,7 +40,9 @@ class KendaraanController extends APIController
     }
 
     public function create(Request $req){
-        $kendaraan = Kendaraan::create($req->all());
+        $kendaraan = Karyawan::find($req->karyawan_id)->kendaraan()->Create($req->all());
+        
+        // $kendaraan->save();
         //set uuid
         $kendaraan_id = $kendaraan->id;
         $uuid = HCrypt::encrypt($kendaraan_id);
