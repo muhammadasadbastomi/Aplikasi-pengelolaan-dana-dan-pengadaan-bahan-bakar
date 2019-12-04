@@ -52,12 +52,8 @@ class KaryawanController extends APIController
         $setuuid->password = $password;
         $setuuid->update();
 
-        'uuid', 'NIP', 'tempat_lahir', 'tanggal_lahir', 'alamat', 'telepon'
-    ];
-    protected $hidden = [
-        'id', 'user_id'
-    ];
         $karyawan = new Karyawan;
+        $karyawan->user_id = $user_id;
         $karyawan->seksi_id     = Hcrypt::decrypt($req->seksi_id);
         $karyawan->NIP     = $req->NIP;
         $karyawan->tempat_lahir    = $req->tempat_lahir;
