@@ -15,6 +15,9 @@ class CreateItemKendaraansTable extends Migration
     {
         Schema::create('item_kendaraans', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->text('uuid')->nullable();
+            $table->string('kode_item')->length(20);
+            $table->string('nama')->length(100);
             $table->timestamps();
         });
     }
