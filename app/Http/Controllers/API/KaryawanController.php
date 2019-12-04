@@ -15,7 +15,7 @@ class KaryawanController extends APIController
     public function get(){
         $karyawan = json_decode(redis::get("karyawan::all"));
         if (!$karyawan) {
-            $karyawan = karyawan::with('user')->get();
+            $karyawan = karyawan::with('user','seksi')->get();
             if (!$karyawan) {
                 return $this->returnController("error", "failed get karyawan data");
             }

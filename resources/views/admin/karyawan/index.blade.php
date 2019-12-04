@@ -17,6 +17,7 @@
                             <thead>
                                 <tr>
                                     <th>NIP</th>
+                                    <th>Nama</th>
                                     <th>Tempat Lahir</th>
                                     <th>Tanggal Lahir</th>
                                     <th>Alamat</th>
@@ -29,7 +30,8 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                <th>NIP</th>
+                                    <th>NIP</th>
+                                    <th>Nama</th>
                                     <th>Tempat Lahir</th>
                                     <th>Tanggal Lahir</th>
                                     <th>Alamat</th>
@@ -57,7 +59,7 @@
                             </div>
                             <div class="modal-body">
                             <form action="" enctype="multipart/form-data" method="post">
-                                <p> <b>Data karywan</b></p>
+                                <p> <b>Data karyawan</b></p>
                                 <hr>
                                 <div class="form-group"><input type="hidden" id="id" name="id"  class="form-control"></div>
                                 <div class="form-group"><label for="company" class=" form-control-label">NIP</label><input type="text" id="NIP" name="NIP" placeholder="NIP" class="form-control"></div>
@@ -74,6 +76,11 @@
                                     </div>
                                 </div>     
                                 <div class="form-group"><label for="city" class=" form-control-label">Alamat</label><textarea name="alamat" id="alamat" class="form-control"></textarea></div>
+                                <div class="form-group"><label  class=" form-control-label">Seksi</label>
+                                    <select name="seksi_id" class="form-control" id="seksi_id">
+                                        <option value="">-- pilih bidang --</option>
+                                    </select>
+                                </div>
                                 <p> <b>Data user</b></p>
                                 <hr>
                                 <div class="form-group"><label for="city" class=" form-control-label">Email</label><input type="email" id="email" name="email"placeholder="Email" class="form-control"></div>
@@ -90,6 +97,22 @@
 @endsection
 @section('script')
 <script>
+getSeksi();
+function getSeksi(){
+    $.ajax({
+            type: "GET",
+            url: "{{ url('/api/seksi')}}",
+            beforeSend: false,
+            success : function(returnData) {
+                $.each(returnData.data, function (index, value) {
+				$('#seksi_id').append(
+					'<option value="'+value.uuid+'">'+value.nama+'</option>'
+				)
+			})
+        }
+    })
+}
+
 function hapus(uuid, nama){
     var csrf_token=$('meta[name="csrf_token"]').attr('content');
     Swal.fire({
@@ -157,15 +180,19 @@ $(document).ready(function() {
         searching: true,
         ajax: {
             "type": "GET",
-            "url": "{{route('API.bidang.get')}}",
+            "url": "{{route('API.karyawan.get')}}",
             "dataSrc": "data",
             "contentType": "application/json; charset=utf-8",
             "dataType": "json",
             "processData": true
         },
         columns: [
-            {"data": "kode_bidang"},
-            {"data": "nama"},
+            {"data": "NIP"},
+            {"data": "user.name"},
+            {"data": "tempat_lahir"},
+            {"data": "tanggal_lahir"},
+            {"data": "seksi.nama"},
+            {"data": "telepon"},
             {data: null , render : function ( data, type, row, meta ) {
                 var uuid = row.uuid;
                 var nama = row.nama;
@@ -179,7 +206,7 @@ $(document).ready(function() {
         e.preventDefault()
         var form = $('#modal-body form');
         if($('.modal-title').text() == 'Edit Data'){
-            var url = '{{route("API.bidang.update", '')}}'
+            var url = '{{route("API.karyawan.update", '')}}'
             var id = $('#id').val();
             $.ajax({
                 url: url+'/'+id,
@@ -203,7 +230,7 @@ $(document).ready(function() {
             })
         }else{
             $.ajax({
-                url: "{{Route('API.bidang.create')}}",
+                url: "{{Route('API.karyawan.create')}}",
                 type: "post",
                 data: $(this).serialize(),
                 success: function (response) {
