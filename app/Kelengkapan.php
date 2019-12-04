@@ -19,7 +19,7 @@ class Kelengkapan extends Model
         return $this->belongsTo('App\Kendaraan');
     }
 
-    public function item()
+    public function item_kendaraan()
     {
         return $this->belongsTo('App\Item_kendaraan');
     }
