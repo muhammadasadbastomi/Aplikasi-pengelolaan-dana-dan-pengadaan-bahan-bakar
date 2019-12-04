@@ -17,6 +17,10 @@ class Karyawan extends Model
       return $this->belongsTo('App\User');
     }
 
+    public function seksi(){
+      return $this->belongsTo('App\Seksi');
+    }
+
     public function kendaraan(){
       return $this->HasOne('App\Kendaraan');
     }
