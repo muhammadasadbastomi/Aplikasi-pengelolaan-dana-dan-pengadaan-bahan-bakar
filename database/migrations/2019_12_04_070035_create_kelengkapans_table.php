@@ -20,7 +20,6 @@ class CreateKelengkapansTable extends Migration
             $table->text('uuid')->nullable();
             $table->foreign('kendaraan_id')->references('id')->on('kendaraans')->onDelete('cascade');
             $table->foreign('item_kendaraan_id')->references('id')->on('item_kendaraans')->onDelete('cascade');
-            
             $table->timestamps();
         });
     }
