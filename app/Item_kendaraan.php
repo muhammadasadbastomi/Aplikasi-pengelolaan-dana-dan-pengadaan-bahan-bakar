@@ -13,4 +13,9 @@ class Item_kendaraan extends Model
     protected $hidden = [
         'id'
     ];
+
+    public function kelengkapan()
+     {
+      return $this->HasOne('App\Kelengkapan');
+     }
 }
