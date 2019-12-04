@@ -71,4 +71,24 @@ class ItemkendaraanController extends APIController
         Redis::set("item_kendaraan:$id", $item_kendaraan);
         return $this->returnController("ok", $item_kendaraan);
     }
+
+    public function delete($uuid){
+        $id = HCrypt::decrypt($uuid);
+        if (!$id) {
+            return $this->returnController("error", "failed decrypt uuid");
+        }
+        $item_kendaraan = item_kendaraan::findOrFail($id);
+        if (!$item_kendaraan) {
+            return $this->returnController("error", "failed find data item_kendaraan");
+        }
+        // Need to check realational
+        // If there relation to other data, return error with message, this data has relation to other table(s)
+        $delete = $item_kendaraan->delete();
+        if (!$delete) {
+            return $this->returnController("error", "failed delete data item_kendaraan");
+        }
+        Redis::del("item_kendaraan:all");
+        Redis::del("item_kendaraan:$id");
+        return $this->returnController("ok", "success delete data item_kendaraan");
+    }
 }
