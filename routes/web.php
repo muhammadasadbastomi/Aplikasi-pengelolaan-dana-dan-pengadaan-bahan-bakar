@@ -50,6 +50,14 @@ Route::namespace('API')->prefix('api')->name('API.')->group(function(){
         Route::delete('{uuid}', 'ItemkendaraanController@delete')->name('delete');
      });
 
+    Route::prefix('kelengkapan')->name('kelengkapan.')->group(function(){
+        Route::get('', 'KelengkapanController@get')->name('get');
+        Route::get('{uuid}', 'KelengkapanController@find')->name('find');
+        Route::post('', 'KelengkapanController@create')->name('create');
+        Route::put('{uuid}', 'KelengkapanController@update')->name('update');
+        Route::delete('{uuid}', 'KelengkapanController@delete')->name('delete');
+     });
+
 });
 /*
 Route::get('/', function () {
