@@ -14,8 +14,13 @@ class Kendaraan extends Model
          'id', 
      ];
  
-     public function karyawan(){
-       return $this->HasOne('App\Karyawan');
+     public function karyawan()
+     {
+       return $this->BelongsTo('App\Karyawan');
      }
 
+     public function kelengkapan()
+     {
+      return $this->HasOne('App\Kelengkapan');
+     }
 }
