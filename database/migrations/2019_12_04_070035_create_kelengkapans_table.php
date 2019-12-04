@@ -15,6 +15,12 @@ class CreateKelengkapansTable extends Migration
     {
         Schema::create('kelengkapans', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedbigInteger('kendaraan_id');
+            $table->unsignedbigInteger('item_kendaraan_id');
+            $table->text('uuid')->nullable();
+            $table->foreign('kendaraan_id')->references('id')->on('kendaraans')->onDelete('cascade');
+            $table->foreign('item_kendaraan_id')->references('id')->on('item_kendaraans')->onDelete('cascade');
+            
             $table->timestamps();
         });
     }
