@@ -13,22 +13,15 @@
                     </div>
                 <br>
                     <div class="data-tables">
-                        <table id="example" class="table table-striped table-bordered text-center" style="width:100%">
+                        <table id="datatable" class="table table-striped table-bordered text-center" style="width:100%">
                             <thead>
                                 <tr>
+                                    <th>Kode Item</th>
                                     <th>Nama Item</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>STNK</td>
-                                    <td>
-                                        <a href=""class="btn btn-rounded btn-primary"> <i class="ti-eye"></i> </a>
-                                        <a href=""class="btn btn-rounded btn-info"> <i class="ti-pencil"></i> </a>
-                                        <a href=""class="btn btn-rounded btn-danger"> <i class="ti-trash"></i> </a>
-                                    </td>
-                                </tr>
                             </tbody>
                             <tfoot>
                                 <tr>
@@ -57,7 +50,8 @@
             <div class="modal-body">
                 <form  method="post" action="">
                     <div class="form-group"><input type="hidden" id="id" name="id"  class="form-control"></div>
-                    <div class="form-group"><label  class=" form-control-label">Nama Item</label><input type="text" id="nm_item" name="nm_item"  class="form-control"></div>
+                    <div class="form-group"><label  class=" form-control-label">Kode Item</label><input type="text" id="kode_item" name="kode_item"  class="form-control"></div>
+                    <div class="form-group"><label  class=" form-control-label">Nama Item</label><input type="text" id="nama" name="nama"  class="form-control"></div>
             <div class="modal-footer">
                     <button type="button" class="btn " data-dismiss="modal"> <i class="ti-close"></i> Batal</button>
                     <button id="btn-form" type="submit" class="btn btn-primary"><i class="ti-save"></i> Simpan</button>
@@ -70,16 +64,142 @@
  </div> 
 @endsection
 @section('script')
-    <script>
-        $(document).ready(function() {
-            $('#example').DataTable();
-
-            $('#tambah').click(function(){
-                $('.modal-title').text('Tambah Data');
-                $('#nm_item').val('');  
-                $('#btn-form').text('Simpan Data');
-                $('#mediumModal').modal('show');
+   
+<script>
+function hapus(uuid, nama){
+    var csrf_token=$('meta[name="csrf_token"]').attr('content');
+    Swal.fire({
+                title: 'apa anda yakin?',
+                text: " Menghapus  Data item-kendaraan " + nama,
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'hapus data',
+                cancelButtonText: 'batal',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.value) {
+                    $.ajax({
+                        url : "{{ url('/api/item-kendaraan')}}" + '/' + uuid,
+                        type : "POST",
+                        data : {'_method' : 'DELETE', '_token' :csrf_token},
+                        success: function (response) {
+                            Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Data Berhasil Dihapus',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                    $('#datatable').DataTable().ajax.reload(null, false);
+                },
             })
-        });
+            } else if (result.dismiss === swal.DismissReason.cancel) {
+                Swal.fire(
+                'Dibatalkan',
+                'data batal dihapus',
+                'error'
+                )
+            }
+        })
+    }
+    $('#tambah').click(function(){
+        $('.modal-title').text('Tambah Data');
+        $('#kode_item').val('');
+        $('#nama').val('');  
+        $('#btn-form').text('Simpan Data');
+        $('#mediumModal').modal('show');
+    })
+    function edit(uuid){
+        $.ajax({
+            type: "GET",
+            url: "{{ url('/api/item-kendaraan')}}" + '/' + uuid,
+            beforeSend: false,
+            success : function(returnData) {
+                $('.modal-title').text('Edit Data');
+                $('#id').val(returnData.data.uuid);
+                $('#kode_item-kode_item').val(returnData.data.kode_item);
+                $('#nama').val(returnData.data.nama);  
+                $('#btn-form').text('Ubah Data');
+                $('#mediumModal').modal('show');
+            }
+        })
+    }
+$(document).ready(function() {
+    $('#datatable').DataTable( {
+        responsive: true,
+        processing: true,
+        serverSide: false,
+        searching: true,
+        ajax: {
+            "type": "GET",
+            "url": "{{route('API.item-kendaraan.get')}}",
+            "dataSrc": "data",
+            "contentType": "application/json; charset=utf-8",
+            "dataType": "json",
+            "processData": true
+        },
+        columns: [
+            {"data": "kode_item"},
+            {"data": "nama"},
+            {data: null , render : function ( data, type, row, meta ) {
+                var uuid = row.uuid;
+                var nama = row.nama;
+                return type === 'display'  ?
+                '<button onClick="edit(\''+uuid+'\')" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#editmodal"><i class="ti-pencil"></i></button> <button onClick="hapus(\'' + uuid + '\',\'' + nama + '\')" class="btn btn-sm btn-outline-danger" > <i class="ti-trash"></i></button>':
+            data;
+            }}
+        ]
+    });
+    $("form").submit(function (e) {
+        e.preventDefault()
+        var form = $('#modal-body form');
+        if($('.modal-title').text() == 'Edit Data'){
+            var url = '{{route("API.item-kendaraan.update", '')}}'
+            var id = $('#id').val();
+            $.ajax({
+                url: url+'/'+id,
+                type: "put",
+                data: $(this).serialize(),
+                success: function (response) {
+                    form.trigger('reset');
+                    $('#mediumModal').modal('hide');
+                    $('#datatable').DataTable().ajax.reload();
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Data Berhasil Tersimpan',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                },
+                error:function(response){
+                    console.log(response);
+                }
+            })
+        }else{
+            $.ajax({
+                url: "{{Route('API.item-kendaraan.create')}}",
+                type: "post",
+                data: $(this).serialize(),
+                success: function (response) {
+                    form.trigger('reset');
+                    $('#mediumModal').modal('hide');
+                    $('#datatable').DataTable().ajax.reload();
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Data Berhasil Disimpan',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                },
+                error:function(response){
+                    console.log(response);
+                }
+            })
+        }
+    } );
+    } );
     </script>
 @endsection

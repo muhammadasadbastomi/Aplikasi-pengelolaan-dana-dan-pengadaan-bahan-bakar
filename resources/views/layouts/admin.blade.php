@@ -51,12 +51,11 @@
                             <li>
                                 <a href="javascript:void(0)" aria-expanded="true"><i class="ti-car"></i><span>Data Kendaraan</span></a>
                                 <ul class="collapse">
+                                    <li><a href="{{Route('kendaraanIndex')}}">kendaraan</a></li>
                                     <li><a href="{{Route('itemKendaraanIndex')}}">Item kendaraan</a></li>
                                     <li><a href="{{Route('objekTransmisiIndex')}}">objek Transmisi</a></li>
-                                    <li><a href="button-group.html">kendaraan</a></li>
                                     <li><a href="{{Route('kelengkapanKendaraanIndex')}}">Kelengkapan Kendaraan</a></li>
                                     <li><a href="{{Route('statusTransmisiIndex')}}">Status Transmisi</a></li>
-            
                                 </ul>
                             </li>
                             <li><a href="maps.html"><i class="ti-map-alt"></i> <span>Pencairan</span></a></li>
