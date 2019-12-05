@@ -14,7 +14,7 @@ class KendaraanController extends APIController
     public function get(){
     $kendaraan = json_decode(redis::get("kendaraan::all"));
     if (!$kendaraan) {
-        $kendaraan = kendaraan::all();
+        $kendaraan = kendaraan::with('karyawan')->get();
         if (!$kendaraan) {
             return $this->returnController("error", "failed get kendaraan data");
         }

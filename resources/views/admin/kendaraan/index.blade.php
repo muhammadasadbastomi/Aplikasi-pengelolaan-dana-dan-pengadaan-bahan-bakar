@@ -6,7 +6,7 @@
         <div class="col-12 mt-5">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="header-title">Tabel data Karyawan</h4>
+                    <h4 class="header-title">Tabel data Kendaraan</h4>
                     <div class="text-right">
                         <button href="" class="btn btn-rounded btn-success " id="tambah" >+ tambah data</button>
                         <a href="" class="btn btn-rounded btn-primary " style="margin-right:5px;"><i class="ti-printer"></i> cetak data</a>
@@ -16,12 +16,12 @@
                         <table id="datatable" class="table table-striped table-bordered text-center" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>NIP</th>
-                                    <th>Nama</th>
-                                    <th>Tempat Lahir</th>
-                                    <th>Tanggal Lahir</th>
-                                    <th>Alamat</th>
-                                    <th>Telepon</th>
+                                    <th>Nopol</th>
+                                    <th>Merk</th>
+                                    <th>Tipe</th>
+                                    <th>Jenis</th>
+                                    <th>Tahun Pembuatan</th>
+                                    <th>nomor Mesin</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -30,12 +30,12 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th>NIP</th>
-                                    <th>Nama</th>
-                                    <th>Tempat Lahir</th>
-                                    <th>Tanggal Lahir</th>
-                                    <th>Alamat</th>
-                                    <th>Telepon</th>
+                                    <th>Nopol</th>
+                                    <th>Merk</th>
+                                    <th>Tipe</th>
+                                    <th>Jenis</th>
+                                    <th>Tahun Pembuatan</th>
+                                    <th>nomor Mesin</th>
                                     <th>Aksi</th>
                                 </tr>
                             </tfoot>
@@ -62,29 +62,43 @@
                                 <p> <b>Data karyawan</b></p>
                                 <hr>
                                 <div class="form-group"><input type="hidden" id="id" name="id"  class="form-control"></div>
-                                <div class="form-group"><label for="company" class=" form-control-label">NIP</label><input type="text" id="NIP" name="NIP" placeholder="NIP" class="form-control"></div>
-                                <div class="form-group"><label for="vat" class=" form-control-label">Nama</label><input type="text" id="name" name="name" placeholder="Nama Karyawan" class="form-control"></div>
-                                <div class="form-group"><label for="city" class=" form-control-label">No Tlp</label><input type="text" id="telepon" name="telepon" placeholder="nomor Telepon" class="form-control"></div>
-                                <div class="form-group"><label for="postal-code" class=" form-control-label">Tempat /Tempat Lahir</label><br>
+                                <div class="form-group"><label  class=" form-control-label">Pemegang</label>
+                                    <select name="karyawan_id" class="form-control" id="karyawan_id">
+                                        <option value="">-- pilih Karyawan --</option>
+                                    </select>
+                                </div>                                
+                                <div class="form-group"><label for="vat" class=" form-control-label">Nopol</label><input type="text" id="nopol" name="nopol" placeholder="Nomor Polisi" class="form-control"></div>
+                                <div class="form-group"><label for="city" class=" form-control-label">Merk</label><input type="text" id="merk" name="merk" placeholder="Merk" class="form-control"></div>
+                                <div class="form-group"><label for="postal-code" class=" form-control-label">Tipe Jenis</label><br>
                                     <div class="row">
                                     <div class="col-6">
-                                        <input type="text" id="tempat_lahir" placeholder="Tempat Lahir" name="tempat_lahir" class="form-control">
+                                        <input type="text" id="tipe" placeholder="Tipe Kendaraan" name="tipe" class="form-control">
                                     </div>
                                     <div class="col-6">
-                                        <input type="date" id="tanggal_lahir" name="tanggal_lahir" class="form-control">
+                                        <input type="text" id="jenis" placeholder="Jenis Kendaraan" name="jenis" class="form-control">
                                     </div>
                                     </div>
-                                </div>     
-                                <div class="form-group"><label for="city" class=" form-control-label">Alamat</label><textarea name="alamat" id="alamat" class="form-control"></textarea></div>
-                                <div class="form-group"><label  class=" form-control-label">Seksi</label>
-                                    <select name="seksi_id" class="form-control" id="seksi_id">
-                                        <option value="">-- pilih bidang --</option>
-                                    </select>
                                 </div>
-                                <p> <b>Data user</b></p>
+                                <div class="form-group"><label for="postal-code" class=" form-control-label">Model / Tahun Pembuatan</label><br>
+                                    <div class="row">
+                                    <div class="col-6">
+                                        <input type="text" id="model" placeholder="Model Kendaraan" name="model" class="form-control">
+                                    </div>
+                                    <div class="col-6">
+                                        <input type="date" id="tahun_pembuatan" name="tahun_pembuatan" class="form-control">
+                                    </div>
+                                    </div>
+                                </div>        
+                                <p> <b>Data Mesin</b></p>
                                 <hr>
-                                <div class="form-group"><label for="city" class=" form-control-label">Email</label><input type="email" id="email" name="email"placeholder="Email" class="form-control"></div>
-                                <div class="form-group"><label for="city" class=" form-control-label">Password</label><input type="text" id="password"name="password" placeholder="" class="form-control"></div>
+                                <div class="form-group"><label for="city" class=" form-control-label">Isi Silinder</label><input type="text" id="isi_silinder" name="isi_silinder"placeholder="isi_silinder" class="form-control"></div>
+                                <div class="form-group"><label for="city" class=" form-control-label">Warna Kendaraan</label><input type="text" id="warna_kendaraan"name="warna_kendaraan" placeholder="warna kendaraan" class="form-control"></div>
+                                <div class="form-group"><label for="city" class=" form-control-label">Bahan Bakar</label><input type="text" id="bahan_bakar"name="bahan_bakar" placeholder="bahan_bakar" class="form-control"></div>
+                                <div class="form-group"><label for="city" class=" form-control-label">Warna TNKB</label><input type="text" id="warna_tnkb"name="warna_tnkb" placeholder="warna_tnkb" class="form-control"></div>
+                                <div class="form-group"><label for="city" class=" form-control-label">Tahun Registrasi</label><input type="date" id="tahun_registrasi"name="tahun_registrasi" placeholder="tahun registrasi" class="form-control"></div>
+                                <div class="form-group"><label for="city" class=" form-control-label">Nomor Mesin</label><input type="text" id="no_mesin"name="no_mesin" placeholder="Nomor Mesin" class="form-control"></div>
+                                <div class="form-group"><label for="city" class=" form-control-label">Nomor BPKB</label><input type="text" id="no_bpkb"name="no_bpkb" placeholder="Nomor BPKB" class="form-control"></div>
+                                <div class="form-group"><label for="city" class=" form-control-label">Tercatat KIB</label><input type="text" id="tercatat_kib"name="tercatat_kib" placeholder="tercatat kib" class="form-control"></div>
                                       
                             <div class="modal-footer">
                                 <button type="button" class="btn " data-dismiss="modal"> <i class="ti-close"></i> Batal</button>
@@ -97,27 +111,27 @@
 @endsection
 @section('script')
 <script>
-getSeksi();
-function getSeksi(){
+getKaryawan();
+function getKaryawan(){
     $.ajax({
             type: "GET",
-            url: "{{ url('/api/seksi')}}",
+            url: "{{ url('/api/karyawan')}}",
             beforeSend: false,
             success : function(returnData) {
                 $.each(returnData.data, function (index, value) {
-				$('#seksi_id').append(
-					'<option value="'+value.uuid+'">'+value.nama+'</option>'
+				$('#karyawan_id').append(
+					'<option value="'+value.uuid+'">'+value.user.name+'</option>'
 				)
 			})
         }
     })
 }
 
-function hapus(uuid, nama){
+function hapus(uuid, nopol){
     var csrf_token=$('meta[name="csrf_token"]').attr('content');
     Swal.fire({
                 title: 'apa anda yakin?',
-                text: " Menghapus  Data Bidang " + nama,
+                text: " Menghapus  Data kendaraan " + nopol,
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
@@ -127,7 +141,7 @@ function hapus(uuid, nama){
             }).then((result) => {
                 if (result.value) {
                     $.ajax({
-                        url : "{{ url('/api/bidang')}}" + '/' + uuid,
+                        url : "{{ url('/api/kendaraan')}}" + '/' + uuid,
                         type : "POST",
                         data : {'_method' : 'DELETE', '_token' :csrf_token},
                         success: function (response) {
@@ -152,8 +166,19 @@ function hapus(uuid, nama){
     }
     $('#tambah').click(function(){
         $('.modal-title').text('Tambah Data');
-        $('#kode_bidang').val('');
-        $('#nama').val('');  
+        $('#nopol').val('');
+        $('#merk').val('');  
+        $('#tipe').val('');  
+        $('#jenis').val('');  
+        $('#model').val('');  
+        $('#tahun_pembuatan').val('');  
+        $('#isi_silinder').val('');  
+        $('#warna_kendaraan').val('');  
+        $('#bahan_bakar').val('');  
+        $('#warna_tnkb').val('');  
+        $('#tahun_registrasi').val('');  
+        $('#nomor_mesin').val('');  
+        $('#tercatat_kib').val('');  
         $('#btn-form').text('Simpan Data');
         $('#mediumModal').modal('show');
     })
@@ -165,14 +190,19 @@ function hapus(uuid, nama){
             success : function(returnData) {
                 $('.modal-title').text('Edit Data');
                 $('#id').val(returnData.data.uuid);
-                $('#NIP').val(returnData.data.NIP);
-                $('#nama').val(returnData.data.user.nama);
-                $('#telepon').val(returnData.data.telepon);  
-                $('#tempat_lahir').val(returnData.data.tempat_lahir);  
-                $('#tanggal_lahir').val(returnData.data.tanggal_lahir);  
-                $('#alamat').val(returnData.data.alamat);  
-                $('#email').val(returnData.data.email);  
-                $('#password').val(returnData.data.password);  
+                $('#nopol').val(returnData.data.nopol);
+                $('#merk').val(returnData.data.merk);  
+                $('#tipe').val(returnData.data.tipe);  
+                $('#jenis').val(returnData.data.jenis);  
+                $('#model').val(returnData.data.model);  
+                $('#tahun_pembuatan').val(returnData.data.tahun_pembuatan);  
+                $('#isi_silinder').val(returnData.data.isi_silinder);  
+                $('#warna_kendaraan').val(returnData.data.warna_kendaraan);  
+                $('#bahan_bakar').val(returnData.data.bahan_bakar);  
+                $('#warna_tnkb').val(returnData.data.warna_tnkb);  
+                $('#tahun_registrasi').val(returnData.data.tahun_registrasi);  
+                $('#nomor_mesin').val(returnData.data.nomor_mesin);  
+                $('#tercatat_kib').val(returnData.data.tercatat_kib);  
 
                 $('#btn-form').text('Ubah Data');
                 $('#mediumModal').modal('show');
@@ -194,17 +224,17 @@ $(document).ready(function() {
             "processData": true
         },
         columns: [
-            {"data": "NIP"},
-            {"data": "user.name"},
-            {"data": "tempat_lahir"},
-            {"data": "tanggal_lahir"},
-            {"data": "seksi.nama"},
-            {"data": "telepon"},
+            {"data": "nopol"},
+            {"data": "merk"},
+            {"data": "tipe"},
+            {"data": "jenis"},
+            {"data": "karyawan.user.name"},
+            {"data": "nomor_mesin"},
             {data: null , render : function ( data, type, row, meta ) {
                 var uuid = row.uuid;
-                var nama = row.nama;
+                var nopol = row.nopol;
                 return type === 'display'  ?
-                '<button onClick="edit(\''+uuid+'\')" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#editmodal"><i class="ti-pencil"></i></button> <button onClick="hapus(\'' + uuid + '\',\'' + nama + '\')" class="btn btn-sm btn-outline-danger" > <i class="ti-trash"></i></button>':
+                '<button onClick="edit(\''+uuid+'\')" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#editmodal"><i class="ti-pencil"></i></button> <button onClick="hapus(\'' + uuid + '\',\'' + nopol + '\')" class="btn btn-sm btn-outline-danger" > <i class="ti-trash"></i></button>':
             data;
             }}
         ]

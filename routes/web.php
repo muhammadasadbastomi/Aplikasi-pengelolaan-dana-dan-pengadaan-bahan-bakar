@@ -80,6 +80,9 @@ Route::get('/seksi/index', 'adminController@seksiIndex')
 Route::get('/karyawan/index', 'adminController@karyawanIndex')
         ->name('karyawanIndex');
 
+// kendaraan
+Route::get('/kendaraan/index', 'adminController@kendaraanIndex')
+        ->name('kendaraanIndex');
 
 //item kendaraan
 Route::get('/itemKendaraan/index', 'adminController@itemKendaraanIndex')

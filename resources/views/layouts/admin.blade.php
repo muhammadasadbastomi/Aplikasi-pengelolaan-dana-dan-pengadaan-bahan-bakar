@@ -53,7 +53,7 @@
                                 <ul class="collapse">
                                     <li><a href="{{Route('itemKendaraanIndex')}}">Item kendaraan</a></li>
                                     <li><a href="{{Route('objekTransmisiIndex')}}">objek Transmisi</a></li>
-                                    <li><a href="button-group.html">kendaraan</a></li>
+                                    <li><a href="{{Route('kendaraanIndex')}}">kendaraan</a></li>
                                     <li><a href="{{Route('kelengkapanKendaraanIndex')}}">Kelengkapan Kendaraan</a></li>
                                     <li><a href="{{Route('statusTransmisiIndex')}}">Status Transmisi</a></li>
             
