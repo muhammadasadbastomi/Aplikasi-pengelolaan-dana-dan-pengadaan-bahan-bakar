@@ -40,7 +40,8 @@ class KendaraanController extends APIController
     }
 
     public function create(Request $req){
-        $kendaraan = Karyawan::find($req->karyawan_id)->kendaraan()->Create($req->all());
+        $karyawan_id = Hcrypt::decrypt($req->karyawan_id);
+        $kendaraan = Karyawan::find($karyawan_id)->kendaraan()->Create($req->all());
         //set uuid
         $kendaraan_id = $kendaraan->id;
         $uuid = HCrypt::encrypt($kendaraan_id);
