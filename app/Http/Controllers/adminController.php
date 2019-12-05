@@ -1,7 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\bidang;
+use App\seksi;
+use Carbon\Carbon;
+use PDF;
 use Illuminate\Http\Request;
 
 class adminController extends Controller
@@ -49,5 +52,21 @@ class adminController extends Controller
     public function statusTransmisiIndex(){
 
         return view('admin.statusTransmisi.index');
+    }
+
+    public function bidangCetak(){
+        $bidang=bidang::all();
+        $tgl= Carbon::now()->format('d-m-Y');
+        $pdf =PDF::loadView('laporan.bidangKeseluruhan', ['bidang'=>$bidang,'tgl'=>$tgl]);
+        $pdf->setPaper('a4', 'potrait');
+        return $pdf->stream('Laporan data Bidang.pdf');
+      }
+    
+    public function seksiCetak(){
+        $seksi=seksi::all();
+        $tgl= Carbon::now()->format('d-m-Y');
+        $pdf =PDF::loadView('laporan.seksiKeseluruhan', ['seksi'=>$seksi,'tgl'=>$tgl]);
+        $pdf->setPaper('a4', 'potrait');
+        return $pdf->stream('Laporan data seksi.pdf');
     }
 }

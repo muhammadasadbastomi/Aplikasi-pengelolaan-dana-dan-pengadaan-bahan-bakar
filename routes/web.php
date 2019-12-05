@@ -1,16 +1,5 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::namespace('API')->prefix('api')->name('API.')->group(function(){
     Route::prefix('bidang')->name('bidang.')->group(function(){
         Route::get('', 'BidangController@get')->name('get');
@@ -70,10 +59,14 @@ Route::get('/', 'adminController@index')
 // Route Bidang
 Route::get('/bidang/index', 'adminController@bidangIndex')
         ->name('bidangIndex');
+Route::get('/bidang/cetak', 'adminController@bidangCetak')
+        ->name('bidangCetak');
 
 //Route Seksi Bidang
 Route::get('/seksi/index', 'adminController@seksiIndex')
         ->name('seksiIndex');
+Route::get('/seksi/cetak', 'adminController@seksiCetak')
+        ->name('seksiCetak');
 
 
 //Route Seksi Bidang
