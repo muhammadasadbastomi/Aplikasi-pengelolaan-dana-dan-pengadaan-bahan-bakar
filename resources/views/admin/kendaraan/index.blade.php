@@ -177,7 +177,8 @@ function hapus(uuid, nopol){
         $('#bahan_bakar').val('');  
         $('#warna_tnkb').val('');  
         $('#tahun_registrasi').val('');  
-        $('#nomor_mesin').val('');  
+        $('#no_mesin').val('');
+        $('#no_bpkb').val('');    
         $('#tercatat_kib').val('');  
         $('#btn-form').text('Simpan Data');
         $('#mediumModal').modal('show');
@@ -185,7 +186,7 @@ function hapus(uuid, nopol){
     function edit(uuid){
         $.ajax({
             type: "GET",
-            url: "{{ url('/api/karyawan')}}" + '/' + uuid,
+            url: "{{ url('/api/kendaraan')}}" + '/' + uuid,
             beforeSend: false,
             success : function(returnData) {
                 $('.modal-title').text('Edit Data');
@@ -201,9 +202,9 @@ function hapus(uuid, nopol){
                 $('#bahan_bakar').val(returnData.data.bahan_bakar);  
                 $('#warna_tnkb').val(returnData.data.warna_tnkb);  
                 $('#tahun_registrasi').val(returnData.data.tahun_registrasi);  
-                $('#nomor_mesin').val(returnData.data.nomor_mesin);  
+                $('#no_mesin').val(returnData.data.no_mesin);
+                $('#no_bpkb').val(returnData.data.no_bpkb);    
                 $('#tercatat_kib').val(returnData.data.tercatat_kib);  
-
                 $('#btn-form').text('Ubah Data');
                 $('#mediumModal').modal('show');
             }
@@ -217,7 +218,7 @@ $(document).ready(function() {
         searching: true,
         ajax: {
             "type": "GET",
-            "url": "{{route('API.karyawan.get')}}",
+            "url": "{{route('API.kendaraan.get')}}",
             "dataSrc": "data",
             "contentType": "application/json; charset=utf-8",
             "dataType": "json",
@@ -228,8 +229,8 @@ $(document).ready(function() {
             {"data": "merk"},
             {"data": "tipe"},
             {"data": "jenis"},
-            {"data": "karyawan.user.name"},
-            {"data": "nomor_mesin"},
+            {"data": "tahun_pembuatan"},
+            {"data": "no_mesin"},
             {data: null , render : function ( data, type, row, meta ) {
                 var uuid = row.uuid;
                 var nopol = row.nopol;
@@ -243,7 +244,7 @@ $(document).ready(function() {
         e.preventDefault()
         var form = $('#modal-body form');
         if($('.modal-title').text() == 'Edit Data'){
-            var url = '{{route("API.karyawan.update", '')}}'
+            var url = '{{route("API.kendaraan.update", '')}}'
             var id = $('#id').val();
             $.ajax({
                 url: url+'/'+id,
@@ -267,7 +268,7 @@ $(document).ready(function() {
             })
         }else{
             $.ajax({
-                url: "{{Route('API.karyawan.create')}}",
+                url: "{{Route('API.kendaraan.create')}}",
                 type: "post",
                 data: $(this).serialize(),
                 success: function (response) {

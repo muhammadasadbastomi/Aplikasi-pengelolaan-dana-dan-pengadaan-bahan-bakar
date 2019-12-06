@@ -61,8 +61,8 @@ class KendaraanController extends APIController
             return $this->returnController("error", "failed decrypt uuid");
         }
         $kendaraan = Kendaraan::findOrFail($id);
-
-        $kendaraan->karyawan_id     = $req->karyawan_id;
+        $karyawan_id = Hcrypt::decrypt($req->karyawan_id);
+        $kendaraan->karyawan_id     = $karyawan_id;
         $kendaraan->nopol    = $req->nopol;
         $kendaraan->merk    = $req->merk;
         $kendaraan->tipe    = $req->tipe;
