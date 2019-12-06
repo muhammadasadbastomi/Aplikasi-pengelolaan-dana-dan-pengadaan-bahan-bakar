@@ -40,7 +40,7 @@ class adminController extends Controller
     }
 
     public function itemKendaraanIndex(){
-
+        
         return view('admin.itemKendaraan.index');
     }
 
