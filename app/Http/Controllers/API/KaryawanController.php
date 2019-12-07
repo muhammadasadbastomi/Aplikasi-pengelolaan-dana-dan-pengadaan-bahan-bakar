@@ -31,7 +31,7 @@ class KaryawanController extends APIController
         }
         $karyawan = Redis::get("karyawan:$id");
         if (!$karyawan) {
-            $karyawan = karyawan::with('user')->where('id',$id)->first();
+            $karyawan = karyawan::with('user','seksi')->where('id',$id)->first();
             if (!$karyawan){
                 return $this->returnController("error", "failed find data karyawan");
             }
