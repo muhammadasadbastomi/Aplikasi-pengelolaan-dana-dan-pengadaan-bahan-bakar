@@ -166,6 +166,7 @@ function hapus(uuid, nopol){
     }
     $('#tambah').click(function(){
         $('.modal-title').text('Tambah Data');
+        $('#karyawan_id').val('');
         $('#nopol').val('');
         $('#merk').val('');  
         $('#tipe').val('');  
@@ -191,6 +192,7 @@ function hapus(uuid, nopol){
             success : function(returnData) {
                 $('.modal-title').text('Edit Data');
                 $('#id').val(returnData.data.uuid);
+                $('#karyawan_id').val(returnData.data.karyawan.uuid);
                 $('#nopol').val(returnData.data.nopol);
                 $('#merk').val(returnData.data.merk);  
                 $('#tipe').val(returnData.data.tipe);  

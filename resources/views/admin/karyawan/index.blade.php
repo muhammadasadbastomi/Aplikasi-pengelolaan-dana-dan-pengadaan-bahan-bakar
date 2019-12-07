@@ -166,14 +166,14 @@ function hapus(uuid, nama){
                 $('.modal-title').text('Edit Data');
                 $('#id').val(returnData.data.uuid);
                 $('#NIP').val(returnData.data.NIP);
-                $('#nama').val(returnData.data.user.nama);
+                $('#name').val(returnData.data.user.name);
                 $('#telepon').val(returnData.data.telepon);  
                 $('#tempat_lahir').val(returnData.data.tempat_lahir);  
                 $('#tanggal_lahir').val(returnData.data.tanggal_lahir);  
-                $('#alamat').val(returnData.data.alamat);  
-                $('#email').val(returnData.data.email);  
-                $('#password').val(returnData.data.password);  
-
+                $('#seksi_id').val(returnData.data.seksi.uuid);
+                $('#alamat').val(returnData.data.alamat);    
+                $('#email').val(returnData.data.user.email);  
+                $('#password').val(returnData.data.user.password);  
                 $('#btn-form').text('Ubah Data');
                 $('#mediumModal').modal('show');
             }

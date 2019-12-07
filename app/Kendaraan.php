@@ -11,7 +11,7 @@ class Kendaraan extends Model
         'bahan_bakar', 'warna_tnkb', 'tahun_registrasi', 'no_mesin', 'no_bpkb', 'tercatat_kib',
      ];
      protected $hidden = [
-         'id','karyawan_id' 
+         'id' 
      ];
  
      public function karyawan()

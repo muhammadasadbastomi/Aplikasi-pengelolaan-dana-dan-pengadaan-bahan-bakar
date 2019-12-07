@@ -143,7 +143,8 @@ function hapus(uuid, nama){
                 $('.modal-title').text('Edit Data');
                 $('#id').val(returnData.data.uuid);
                 $('#kode_seksi').val(returnData.data.kode_seksi);
-                $('#nama').val(returnData.data.nama);  
+                $('#nama').val(returnData.data.nama);
+                $('#bidang_id').val(returnData.data.bidang.uuid);    
                 $('#btn-form').text('Ubah Data');
                 $('#mediumModal').modal('show');
             }
