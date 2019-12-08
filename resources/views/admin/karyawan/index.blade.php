@@ -77,9 +77,9 @@
                                 </div>     
                                 <div class="form-group"><label for="city" class=" form-control-label">Alamat</label><textarea name="alamat" id="alamat" class="form-control"></textarea></div>
                                 <div class="form-group"><label  class=" form-control-label">Seksi</label>
-                                    <select name="seksi_id" class="form-control" id="seksi_id">
-                                        <option value="">-- pilih bidang --</option>
-                                    </select>
+                                <select name="seksi_id" class="form-control" id="seksi_id">
+                                    <option value="">-- pilih bidang --</option>
+                                </select>
                                 </div>
                                 <p> <b>Data user</b></p>
                                 <hr>
@@ -152,8 +152,16 @@ function hapus(uuid, nama){
     }
     $('#tambah').click(function(){
         $('.modal-title').text('Tambah Data');
-        $('#kode_bidang').val('');
-        $('#nama').val('');  
+        $('#id').val('');
+        $('#NIP').val('');
+        $('#name').val('');
+        $('#telepon').val('');  
+        $('#tempat_lahir').val('');  
+        $('#tanggal_lahir').val('');  
+        $('#seksi_id').val('');
+        $('#alamat').val('');    
+        $('#email').val('');  
+        $('#password').val('');  
         $('#btn-form').text('Simpan Data');
         $('#mediumModal').modal('show');
     })
@@ -169,8 +177,8 @@ function hapus(uuid, nama){
                 $('#name').val(returnData.data.user.name);
                 $('#telepon').val(returnData.data.telepon);  
                 $('#tempat_lahir').val(returnData.data.tempat_lahir);  
-                $('#tanggal_lahir').val(returnData.data.tanggal_lahir);  
-                $('#seksi_id').val(returnData.data.seksi.uuid);
+                $('#tanggal_lahir').val(returnData.data.tanggal_lahir);
+                $('#seksi_id').val(returnData.data.seksi.uuid);    
                 $('#alamat').val(returnData.data.alamat);    
                 $('#email').val(returnData.data.user.email);  
                 $('#password').val(returnData.data.user.password);  

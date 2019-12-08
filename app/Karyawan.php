@@ -10,7 +10,7 @@ class Karyawan extends Model
        'uuid', 'NIP', 'tempat_lahir', 'tanggal_lahir', 'alamat', 'telepon'
     ];
     protected $hidden = [
-        'id', 'user_id'
+        'id'
     ];
 
     public function user(){
