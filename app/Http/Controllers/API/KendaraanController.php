@@ -30,7 +30,7 @@ class KendaraanController extends APIController
         }
         $kendaraan = Redis::get("kendaraan:$id");
         if (!$kendaraan) {
-            $kendaraan = kendaraan::find($id);
+            $kendaraan = kendaraan::with('karyawan')->where('id',$id)->first();
             if (!$kendaraan){
                 return $this->returnController("error", "failed find data kendaraan");
             }

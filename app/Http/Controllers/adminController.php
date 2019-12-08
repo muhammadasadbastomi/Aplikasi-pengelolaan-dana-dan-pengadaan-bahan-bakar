@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\bidang;
 use App\seksi;
+use App\karyawan;
 use Carbon\Carbon;
 use PDF;
 use Illuminate\Http\Request;
@@ -68,5 +69,13 @@ class adminController extends Controller
         $pdf =PDF::loadView('laporan.seksiKeseluruhan', ['seksi'=>$seksi,'tgl'=>$tgl]);
         $pdf->setPaper('a4', 'potrait');
         return $pdf->stream('Laporan data seksi.pdf');
+    }
+
+    public function karyawanCetak(){
+        $karyawan=karyawan::all();
+        $tgl= Carbon::now()->format('d-m-Y');
+        $pdf =PDF::loadView('laporan.karyawanKeseluruhan', ['karyawan'=>$karyawan,'tgl'=>$tgl]);
+        $pdf->setPaper('a4', 'potrait');
+        return $pdf->stream('Laporan data karyawan.pdf');
     }
 }

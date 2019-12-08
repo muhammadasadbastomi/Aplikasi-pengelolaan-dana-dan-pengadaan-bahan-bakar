@@ -69,9 +69,11 @@ Route::get('/seksi/cetak', 'adminController@seksiCetak')
         ->name('seksiCetak');
 
 
-//Route Seksi Bidang
+//Route Karyawan
 Route::get('/karyawan/index', 'adminController@karyawanIndex')
         ->name('karyawanIndex');
+Route::get('/karyawan/cetak', 'adminController@karyawanCetak')
+        ->name('karyawanCetak');
 
 // kendaraan
 Route::get('/kendaraan/index', 'adminController@kendaraanIndex')
