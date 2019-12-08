@@ -5,6 +5,7 @@ use App\bidang;
 use App\seksi;
 use App\karyawan;
 use App\kendaraan;
+use App\item_kendaraan;
 use Carbon\Carbon;
 use PDF;
 use Illuminate\Http\Request;
@@ -87,4 +88,13 @@ class adminController extends Controller
         $pdf->setPaper('a4', 'potrait');
         return $pdf->stream('Laporan data Kendaraan.pdf');
     }
+
+    public function itemKendaraanCetak(){
+        $itemKendaraan=item_kendaraan::all();
+        $tgl= Carbon::now()->format('d-m-Y');
+        $pdf =PDF::loadView('laporan.itemKendaraanKeseluruhan', ['itemKendaraan'=>$itemKendaraan,'tgl'=>$tgl]);
+        $pdf->setPaper('a4', 'potrait');
+        return $pdf->stream('Laporan data Item Kendaraan.pdf');
+    }
+
 }
