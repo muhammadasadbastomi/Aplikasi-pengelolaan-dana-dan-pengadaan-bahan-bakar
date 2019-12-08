@@ -78,6 +78,8 @@ Route::get('/karyawan/cetak', 'adminController@karyawanCetak')
 // kendaraan
 Route::get('/kendaraan/index', 'adminController@kendaraanIndex')
         ->name('kendaraanIndex');
+Route::get('/kendaraan/cetak', 'adminController@kendaraanCetak')
+        ->name('kendaraanCetak');
 
 //item kendaraan
 Route::get('/itemKendaraan/index', 'adminController@itemKendaraanIndex')
