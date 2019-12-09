@@ -74,7 +74,7 @@ class SeksiController extends APIController
         if (!$seksi) {
             return $this->returnController("error", "failed find data seksi");
         }
-    
+        $seksi = seksi::with('bidang')->where('id',$id)->first();
         Redis::del("seksi:all");
         Redis::set("seksi:$id", $seksi);
         return $this->returnController("ok", $seksi);

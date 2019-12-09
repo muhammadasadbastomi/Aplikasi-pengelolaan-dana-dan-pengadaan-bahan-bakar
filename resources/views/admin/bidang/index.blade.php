@@ -52,8 +52,8 @@
             <div class="modal-body">
                 <form  method="post" action="">
                     <div class="form-group"><input type="hidden" id="id" name="id"  class="form-control"></div>
-                    <div class="form-group"><label  class=" form-control-label">Kode Seksi</label><input type="text" id="kode_bidang" name="kode_bidang"  class="form-control"></div>
-                    <div class="form-group"><label  class=" form-control-label">Nama Seksi</label><input type="text" id="nama" name="nama"  class="form-control"></div>
+                    <div class="form-group"><label  class=" form-control-label">Kode Bidang</label><input type="text" id="kode_bidang" name="kode_bidang"  class="form-control"></div>
+                    <div class="form-group"><label  class=" form-control-label">Nama Bidang</label><input type="text" id="nama" name="nama"  class="form-control"></div>
             <div class="modal-footer">
                     <button type="button" class="btn " data-dismiss="modal"> <i class="ti-close"></i> Batal</button>
                     <button id="btn-form" type="submit" class="btn btn-primary"><i class="ti-save"></i> Simpan</button>

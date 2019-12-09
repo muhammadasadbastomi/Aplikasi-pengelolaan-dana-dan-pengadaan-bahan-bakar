@@ -9,7 +9,7 @@
                     <h4 class="header-title">Tabel data Kendaraan</h4>
                     <div class="text-right">
                         <button href="" class="btn btn-rounded btn-success " id="tambah" >+ tambah data</button>
-                        <a href="" class="btn btn-rounded btn-primary " style="margin-right:5px;"><i class="ti-printer"></i> cetak data</a>
+                        <a href="{{Route('kendaraanCetak')}}" class="btn btn-rounded btn-primary " style="margin-right:5px;"><i class="ti-printer"></i> cetak data</a>
                     </div>
                 <br>
                     <div class="data-tables">

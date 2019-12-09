@@ -113,6 +113,7 @@ class KaryawanController extends APIController
         if (!$user && $karyawan) {
             return $this->returnController("error", "failed find data karyawan");
         }
+        $karyawan = karyawan::with('user','seksi')->where('id',$id)->first();
         $merge = (['user' => $user, 'karyawan' => $karyawan]);
         Redis::del("user:all");
         Redis::set("user:$user_id", $user);

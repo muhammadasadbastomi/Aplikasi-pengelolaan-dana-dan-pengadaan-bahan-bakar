@@ -69,17 +69,23 @@ Route::get('/seksi/cetak', 'adminController@seksiCetak')
         ->name('seksiCetak');
 
 
-//Route Seksi Bidang
+//Route Karyawan
 Route::get('/karyawan/index', 'adminController@karyawanIndex')
         ->name('karyawanIndex');
+Route::get('/karyawan/cetak', 'adminController@karyawanCetak')
+        ->name('karyawanCetak');
 
 // kendaraan
 Route::get('/kendaraan/index', 'adminController@kendaraanIndex')
         ->name('kendaraanIndex');
+Route::get('/kendaraan/cetak', 'adminController@kendaraanCetak')
+        ->name('kendaraanCetak');
 
 //item kendaraan
 Route::get('/itemKendaraan/index', 'adminController@itemKendaraanIndex')
         ->name('itemKendaraanIndex');
+Route::get('/itemKendaraan/cetak', 'adminController@itemKendaraanCetak')
+        ->name('itemKendaraanCetak');
 
 //kelengkapan kendaraan
 Route::get('/kelengkapanKendaraan/index', 'adminController@kelengkapanKendaraanIndex')
