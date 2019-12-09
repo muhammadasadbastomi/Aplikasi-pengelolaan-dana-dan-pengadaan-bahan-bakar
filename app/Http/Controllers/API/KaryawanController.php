@@ -71,7 +71,10 @@ class KaryawanController extends APIController
             return $this->returnController("error", "failed create data karyawan");
         }
         $merge = (['user' => $user, 'karyawan' => $karyawan]);
+        Redis::del("user:all");
+        Redis::set("user:all", $user);
         Redis::del("karyawan:all");
+        Redis::set("karyawan:all", $karyawan);
         return $this->returnController("ok", $merge);
     }
 
