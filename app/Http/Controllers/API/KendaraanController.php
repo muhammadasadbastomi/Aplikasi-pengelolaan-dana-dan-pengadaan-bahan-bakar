@@ -51,7 +51,6 @@ class KendaraanController extends APIController
         if (!$kendaraan) {
             return $this->returnController("error", "failed create data kendaraan");
         }
-        $kendaraan = kendaraan::with('karyawan')->where('id',$id)->first();
         Redis::del("kendaraan:all");
         Redis::set("kendaraan:all", $kendaraan);
         return $this->returnController("ok", $kendaraan);
@@ -84,6 +83,7 @@ class KendaraanController extends APIController
         if (!$kendaraan) {
             return $this->returnController("error", "failed find data kendaraan");
         }
+        $kendaraan = kendaraan::with('karyawan')->get();
         Redis::del("kendaraan:all");
         Redis::set("kendaraan:$id", $kendaraan);
         return $this->returnController("ok", $kendaraan);
