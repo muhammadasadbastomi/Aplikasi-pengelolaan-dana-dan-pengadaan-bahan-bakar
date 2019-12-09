@@ -128,7 +128,8 @@ class KaryawanController extends APIController
             return $this->returnController("error", "failed decrypt uuid");
         }
         $karyawan = karyawan::find($id);
-        $user = user::find($karyawan->user_id);
+        $user_id = $karyawan->user_id;
+        $user = user::find($user_id);
         if (!$user) {
             return $this->returnController("error", "failed find data karyawan");
         }
@@ -139,7 +140,7 @@ class KaryawanController extends APIController
             return $this->returnController("error", "failed delete data karyawan");
         }
         Redis::del("user:all");
-        Redis::del("user:$karyawan->user_id");
+        Redis::del("user:$user_id");
         return $this->returnController("ok", "success delete data karyawan");
     }
 

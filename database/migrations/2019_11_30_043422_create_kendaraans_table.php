@@ -16,7 +16,7 @@ class CreateKendaraansTable extends Migration
         Schema::create('kendaraans', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('uuid')->nullable();
-            $table->unsignedbigInteger('karyawan_id');
+            $table->unsignedbigInteger('karyawan_id')->nullable();
             $table->string('nopol')->length(20);
             $table->string('merk')->length(100);
             $table->string('tipe')->length(50);
@@ -32,7 +32,7 @@ class CreateKendaraansTable extends Migration
             $table->string('no_bpkb')->length(50);
             $table->string('tercatat_kib')->length(10);
             $table->timestamps();
-            $table->foreign('karyawan_id')->references('id')->on('karyawans');
+            $table->foreign('karyawan_id')->references('id')->on('karyawans')->onDelete('set null');;
         });
     }
 
