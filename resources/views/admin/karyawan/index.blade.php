@@ -127,7 +127,7 @@ function hapus(uuid, nama){
             }).then((result) => {
                 if (result.value) {
                     $.ajax({
-                        url : "{{ url('/api/bidang')}}" + '/' + uuid,
+                        url : "{{ url('/api/karyawan')}}" + '/' + uuid,
                         type : "POST",
                         data : {'_method' : 'DELETE', '_token' :csrf_token},
                         success: function (response) {
@@ -210,7 +210,7 @@ $(document).ready(function() {
             {"data": "telepon"},
             {data: null , render : function ( data, type, row, meta ) {
                 var uuid = row.uuid;
-                var nama = row.nama;
+                var nama = row.user.name;
                 return type === 'display'  ?
                 '<button onClick="edit(\''+uuid+'\')" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#editmodal"><i class="ti-pencil"></i></button> <button onClick="hapus(\'' + uuid + '\',\'' + nama + '\')" class="btn btn-sm btn-outline-danger" > <i class="ti-trash"></i></button>':
             data;

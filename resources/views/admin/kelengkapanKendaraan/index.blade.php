@@ -177,8 +177,9 @@ function hapus(uuid, nama){
             success : function(returnData) {
                 $('.modal-title').text('Edit Data');
                 $('#id').val(returnData.data.uuid);
-                $('#kendaraan_id').val('');
-                $('#item_kendaraan_id').val('');  
+                $('#kendaraan_id').val(returnData.data.kendaraan.uuid);
+                $('#item_kendaraan_id').val(returnData.data.item_kendaraan.uuid);
+                $("input[name=status][value=" + returnData.data.status. + "]").attr('checked', 'checked');
                 $('#btn-form').text('Ubah Data');
                 $('#mediumModal').modal('show');
             }
