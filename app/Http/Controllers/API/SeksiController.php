@@ -58,7 +58,7 @@ class SeksiController extends APIController
             return $this->returnController("error", "failed create data seksi");
         }
         Redis::del("seksi:all");
-        Redis::set("user:all", $user);
+        Redis::set("seksi:all", $seksi);
         return $this->returnController("ok", $seksi);
     }
 
