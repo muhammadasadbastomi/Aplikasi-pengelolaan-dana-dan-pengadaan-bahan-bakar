@@ -50,6 +50,7 @@ class ItemkendaraanController extends APIController
             return $this->returnController("error", "failed create data item kendaraan");
         }
         Redis::del("item_kendaraan:all");
+        Redis::set("item_kendaraan:all", $item_kendaraan);
         return $this->returnController("ok", $item_kendaraan);
     }
 

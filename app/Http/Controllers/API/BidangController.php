@@ -51,6 +51,7 @@ class BidangController extends APIController
             return $this->returnController("error", "failed create data bidang");
         }
         Redis::del("bidang:all");
+        Redis::set("bidang:all", $bidang);
         return $this->returnController("ok", $bidang);
     }
 

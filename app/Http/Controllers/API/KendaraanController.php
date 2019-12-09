@@ -52,6 +52,7 @@ class KendaraanController extends APIController
             return $this->returnController("error", "failed create data kendaraan");
         }
         Redis::del("kendaraan:all");
+        Redis::set("kendaraan:all", $kendaraan);
         return $this->returnController("ok", $kendaraan);
     }
 

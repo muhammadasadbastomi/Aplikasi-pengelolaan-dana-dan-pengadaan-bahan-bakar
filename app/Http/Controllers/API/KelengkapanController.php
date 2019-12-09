@@ -57,6 +57,7 @@ class KelengkapanController extends APIController
             return $this->returnController("error", "failed create data kelengkapan");
         }
         Redis::del("kelengkapan:all");
+        Redis::set("kelengkapan:all", $kelengkapan);
         return $this->returnController("ok", $kelengkapan);
     }
 }
