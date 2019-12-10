@@ -90,6 +90,8 @@ Route::get('/itemKendaraan/cetak', 'adminController@itemKendaraanCetak')
 //kelengkapan kendaraan
 Route::get('/kelengkapanKendaraan/index', 'adminController@kelengkapanKendaraanIndex')
         ->name('kelengkapanKendaraanIndex');
+Route::get('/kelengkapanKendaraan/cetak', 'adminController@kelengkapanKendaraanCetak')
+        ->name('kelengkapanKendaraanCetak');
 
 //Objek Transmisi
 Route::get('/objektransmisi/index', 'adminController@objekTransmisiIndex')
