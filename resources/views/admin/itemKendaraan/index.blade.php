@@ -70,7 +70,7 @@ function hapus(uuid, nama){
     var csrf_token=$('meta[name="csrf_token"]').attr('content');
     Swal.fire({
                 title: 'apa anda yakin?',
-                text: " Menghapus  Data item-kendaraan " + nama,
+                text: " Menghapus  Data item kendaraan " + nama,
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',

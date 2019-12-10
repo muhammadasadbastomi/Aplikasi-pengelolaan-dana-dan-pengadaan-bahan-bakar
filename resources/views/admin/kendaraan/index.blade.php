@@ -59,7 +59,7 @@
                             </div>
                             <div class="modal-body">
                             <form action="" enctype="multipart/form-data" method="post">
-                                <p> <b>Data karyawan</b></p>
+                                <p> <b>Data kendaraan</b></p>
                                 <hr>
                                 <div class="form-group"><input type="hidden" id="id" name="id"  class="form-control"></div>
                                 <div class="form-group"><label  class=" form-control-label">Pemegang</label>

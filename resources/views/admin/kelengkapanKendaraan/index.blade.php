@@ -19,6 +19,7 @@
                                     <th>Kendaraan</th>
                                     <th>Item Kendaraan</th>
                                     <th>Status</th>
+                                    <th>pemeriksaan Terakhir</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -30,6 +31,7 @@
                                     <th>Kendaraan</th>
                                     <th>Item Kendaraan</th>
                                     <th>Status</th>
+                                    <th>pemeriksaan Terakhir</th>
                                     <th>Aksi</th>
                                 </tr>
                             </tfoot>
@@ -129,7 +131,7 @@ function hapus(uuid, nama){
     var csrf_token=$('meta[name="csrf_token"]').attr('content');
     Swal.fire({
                 title: 'apa anda yakin?',
-                text: " Menghapus  Data seksi " + nama,
+                text: " Menghapus  Data kelengkapan " + nama,
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
@@ -179,7 +181,7 @@ function hapus(uuid, nama){
                 $('#id').val(returnData.data.uuid);
                 $('#kendaraan_id').val(returnData.data.kendaraan.uuid);
                 $('#item_kendaraan_id').val(returnData.data.item_kendaraan.uuid);
-                $("input[name=status][value=" + returnData.data.status. + "]").attr('checked', 'checked');
+                $("input[name=status][value=" + returnData.data.status + "]").attr('checked', 'checked');
                 $('#btn-form').text('Ubah Data');
                 $('#mediumModal').modal('show');
             }
@@ -202,11 +204,13 @@ $(document).ready(function() {
         columns: [
             {"data": "kendaraan.nopol"},
             {"data": "item_kendaraan.nama"},
+            {"data": "updated_at"},
             {"data": "status"},
             {data: null , render : function ( data, type, row, meta ) {
                 var uuid = row.uuid;
+                var nama = row.item-kendaraan.nama;
                 return type === 'display'  ?
-                '<button onClick="edit(\''+uuid+'\')" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#editmodal"><i class="ti-pencil"></i></button> <button onClick="hapus(\'' + uuid + '\')" class="btn btn-sm btn-outline-danger" > <i class="ti-trash"></i></button>':
+                '<button onClick="edit(\''+uuid+'\')" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#editmodal"><i class="ti-pencil"></i></button> <button onClick="hapus(\'' + uuid + '\',\'' + nama + '\')" class="btn btn-sm btn-outline-danger" > <i class="ti-trash"></i></button>':
             data;
             }}
         ]
