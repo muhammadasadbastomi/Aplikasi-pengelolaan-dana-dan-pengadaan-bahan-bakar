@@ -96,176 +96,184 @@
                 </div>
 @endsection
 @section('script')
-<script>
-getSeksi();
-function getSeksi(){
-    $.ajax({
-            type: "GET",
-            url: "{{ url('/api/seksi')}}",
-            beforeSend: false,
-            success : function(returnData) {
-                $.each(returnData.data, function (index, value) {
-				$('#seksi_id').append(
-					'<option value="'+value.uuid+'">'+value.nama+'</option>'
-				)
-			})
+    <script>
+        //funsgi get data seksi
+        getSeksi = () =>{
+            $.ajax({
+                    type: "GET",
+                    url: "{{ url('/api/seksi')}}",
+                    beforeSend: false,
+                    success : function(returnData) {
+                        $.each(returnData.data, function (index, value) {
+                        $('#seksi_id').append(
+                            '<option value="'+value.uuid+'">'+value.nama+'</option>'
+                        )
+                    })
+                }
+            })
         }
-    })
-}
+        getSeksi();
+        //funsgi hapus
+        hapus = (uuid, nama)=>{
+            var csrf_token=$('meta[name="csrf_token"]').attr('content');
+            Swal.fire({
+                        title: 'apa anda yakin?',
+                        text: " Menghapus  Data Karyawan " + nama,
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'hapus data',
+                        cancelButtonText: 'batal',
+                        reverseButtons: true
+                    }).then((result) => {
+                        if (result.value) {
+                            $.ajax({
+                                url : "{{ url('/api/karyawan')}}" + '/' + uuid,
+                                type : "POST",
+                                data : {'_method' : 'DELETE', '_token' :csrf_token},
+                                success: function (response) {
+                                    Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'success',
+                                    title: 'Data Berhasil Dihapus',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                })
+                            $('#datatable').DataTable().ajax.reload(null, false);
+                        },
+                    })
+                    } else if (result.dismiss === swal.DismissReason.cancel) {
+                        Swal.fire(
+                        'Dibatalkan',
+                        'data batal dihapus',
+                        'error'
+                        )
+                    }
+                })
+            }
 
-function hapus(uuid, nama){
-    var csrf_token=$('meta[name="csrf_token"]').attr('content');
-    Swal.fire({
-                title: 'apa anda yakin?',
-                text: " Menghapus  Data Karyawan " + nama,
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'hapus data',
-                cancelButtonText: 'batal',
-                reverseButtons: true
-            }).then((result) => {
-                if (result.value) {
-                    $.ajax({
-                        url : "{{ url('/api/karyawan')}}" + '/' + uuid,
-                        type : "POST",
-                        data : {'_method' : 'DELETE', '_token' :csrf_token},
-                        success: function (response) {
-                            Swal.fire({
-                            position: 'top-end',
-                            icon: 'success',
-                            title: 'Data Berhasil Dihapus',
-                            showConfirmButton: false,
-                            timer: 1500
-                        })
-                    $('#datatable').DataTable().ajax.reload(null, false);
-                },
-            })
-            } else if (result.dismiss === swal.DismissReason.cancel) {
-                Swal.fire(
-                'Dibatalkan',
-                'data batal dihapus',
-                'error'
-                )
-            }
-        })
-    }
-    $('#tambah').click(function(){
-        $('.modal-title').text('Tambah Data');
-        $('#id').val('');
-        $('#NIP').val('');
-        $('#name').val('');
-        $('#telepon').val('');  
-        $('#tempat_lahir').val('');  
-        $('#tanggal_lahir').val('');  
-        $('#seksi_id').val('');
-        $('#alamat').val('');    
-        $('#email').val('');  
-        $('#password').val('');  
-        $('#btn-form').text('Simpan Data');
-        $('#mediumModal').modal('show');
-    })
-    function edit(uuid){
-        $.ajax({
-            type: "GET",
-            url: "{{ url('/api/karyawan')}}" + '/' + uuid,
-            beforeSend: false,
-            success : function(returnData) {
-                $('.modal-title').text('Edit Data');
-                $('#id').val(returnData.data.uuid);
-                $('#NIP').val(returnData.data.NIP);
-                $('#name').val(returnData.data.user.name);
-                $('#telepon').val(returnData.data.telepon);  
-                $('#tempat_lahir').val(returnData.data.tempat_lahir);  
-                $('#tanggal_lahir').val(returnData.data.tanggal_lahir);
-                $('#seksi_id').val(returnData.data.seksi.uuid);    
-                $('#alamat').val(returnData.data.alamat);    
-                $('#email').val(returnData.data.user.email);  
-                $('#password').val(returnData.data.user.password);  
-                $('#btn-form').text('Ubah Data');
+            //event btn tambah klik
+            $('#tambah').click(function(){
+                $('.modal-title').text('Tambah Data');
+                $('#id').val('');
+                $('#NIP').val('');
+                $('#name').val('');
+                $('#telepon').val('');  
+                $('#tempat_lahir').val('');  
+                $('#tanggal_lahir').val('');  
+                $('#seksi_id').val('');
+                $('#alamat').val('');    
+                $('#email').val('');  
+                $('#password').val('');  
+                $('#btn-form').text('Simpan Data');
                 $('#mediumModal').modal('show');
+            })
+
+            //event btn edit klik        
+            edit = uuid =>{
+                $.ajax({
+                    type: "GET",
+                    url: "{{ url('/api/karyawan')}}" + '/' + uuid,
+                    beforeSend: false,
+                    success : function(returnData) {
+                        $('.modal-title').text('Edit Data');
+                        $('#id').val(returnData.data.uuid);
+                        $('#NIP').val(returnData.data.NIP);
+                        $('#name').val(returnData.data.user.name);
+                        $('#telepon').val(returnData.data.telepon);  
+                        $('#tempat_lahir').val(returnData.data.tempat_lahir);  
+                        $('#tanggal_lahir').val(returnData.data.tanggal_lahir);
+                        $('#seksi_id').val(returnData.data.seksi.uuid);    
+                        $('#alamat').val(returnData.data.alamat);    
+                        $('#email').val(returnData.data.user.email);  
+                        $('#password').val(returnData.data.user.password);  
+                        $('#btn-form').text('Ubah Data');
+                        $('#mediumModal').modal('show');
+                    }
+                })
             }
-        })
-    }
-$(document).ready(function() {
-    $('#datatable').DataTable( {
-        responsive: true,
-        processing: true,
-        serverSide: false,
-        searching: true,
-        ajax: {
-            "type": "GET",
-            "url": "{{route('API.karyawan.get')}}",
-            "dataSrc": "data",
-            "contentType": "application/json; charset=utf-8",
-            "dataType": "json",
-            "processData": true
-        },
-        columns: [
-            {"data": "NIP"},
-            {"data": "user.name"},
-            {"data": "tempat_lahir"},
-            {"data": "tanggal_lahir"},
-            {"data": "seksi.nama"},
-            {"data": "telepon"},
-            {data: null , render : function ( data, type, row, meta ) {
-                var uuid = row.uuid;
-                var nama = row.user.name;
-                return type === 'display'  ?
-                '<button onClick="edit(\''+uuid+'\')" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#editmodal"><i class="ti-pencil"></i></button> <button onClick="hapus(\'' + uuid + '\',\'' + nama + '\')" class="btn btn-sm btn-outline-danger" > <i class="ti-trash"></i></button>':
-            data;
-            }}
-        ]
-    });
-    $("form").submit(function (e) {
-        e.preventDefault()
-        var form = $('#modal-body form');
-        if($('.modal-title').text() == 'Edit Data'){
-            var url = '{{route("API.karyawan.update", '')}}'
-            var id = $('#id').val();
-            $.ajax({
-                url: url+'/'+id,
-                type: "put",
-                data: $(this).serialize(),
-                success: function (response) {
-                    form.trigger('reset');
-                    $('#mediumModal').modal('hide');
-                    $('#datatable').DataTable().ajax.reload();
-                    Swal.fire({
-                        position: 'top-end',
-                        icon: 'success',
-                        title: 'Data Berhasil Tersimpan',
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
-                },
-                error:function(response){
-                    console.log(response);
-                }
-            })
-        }else{
-            $.ajax({
-                url: "{{Route('API.karyawan.create')}}",
-                type: "post",
-                data: $(this).serialize(),
-                success: function (response) {
-                    form.trigger('reset');
-                    $('#mediumModal').modal('hide');
-                    $('#datatable').DataTable().ajax.reload();
-                    Swal.fire({
-                        position: 'top-end',
-                        icon: 'success',
-                        title: 'Data Berhasil Disimpan',
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
-                },
-                error:function(response){
-                    console.log(response);
-                }
-            })
-        }
-    } );
-    } );
+            //fungsi render datatable
+            $(document).ready(function() {
+                $('#datatable').DataTable( {
+                    responsive: true,
+                    processing: true,
+                    serverSide: false,
+                    searching: true,
+                    ajax: {
+                        "type": "GET",
+                        "url": "{{route('API.karyawan.get')}}",
+                        "dataSrc": "data",
+                        "contentType": "application/json; charset=utf-8",
+                        "dataType": "json",
+                        "processData": true
+                    },
+                    columns: [
+                        {"data": "NIP"},
+                        {"data": "user.name"},
+                        {"data": "tempat_lahir"},
+                        {"data": "tanggal_lahir"},
+                        {"data": "seksi.nama"},
+                        {"data": "telepon"},
+                        {data: null , render : function ( data, type, row, meta ) {
+                            var uuid = row.uuid;
+                            var nama = row.user.name;
+                            return type === 'display'  ?
+                            '<button onClick="edit(\''+uuid+'\')" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#editmodal"><i class="ti-pencil"></i></button> <button onClick="hapus(\'' + uuid + '\',\'' + nama + '\')" class="btn btn-sm btn-outline-danger" > <i class="ti-trash"></i></button>':
+                        data;
+                        }}
+                    ]
+                });
+    
+                //event form submit
+                $("form").submit(function (e) {
+                    e.preventDefault()
+                    var form = $('#modal-body form');
+                    if($('.modal-title').text() == 'Edit Data'){
+                        var url = '{{route("API.karyawan.update", '')}}'
+                        var id = $('#id').val();
+                        $.ajax({
+                            url: url+'/'+id,
+                            type: "put",
+                            data: $(this).serialize(),
+                            success: function (response) {
+                                form.trigger('reset');
+                                $('#mediumModal').modal('hide');
+                                $('#datatable').DataTable().ajax.reload();
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'success',
+                                    title: 'Data Berhasil Tersimpan',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                })
+                            },
+                            error:function(response){
+                                console.log(response);
+                            }
+                        })
+                    }else{
+                        $.ajax({
+                            url: "{{Route('API.karyawan.create')}}",
+                            type: "post",
+                            data: $(this).serialize(),
+                            success: function (response) {
+                                form.trigger('reset');
+                                $('#mediumModal').modal('hide');
+                                $('#datatable').DataTable().ajax.reload();
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'success',
+                                    title: 'Data Berhasil Disimpan',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                })
+                            },
+                            error:function(response){
+                                console.log(response);
+                            }
+                        })
+                    }
+                } );
+                } );
     </script>
 @endsection
