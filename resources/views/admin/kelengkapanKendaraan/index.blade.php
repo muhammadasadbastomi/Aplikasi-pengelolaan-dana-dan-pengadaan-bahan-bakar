@@ -9,7 +9,7 @@
                     <h4 class="header-title">Tabel Data Kelengkapan Kendaraan</h4>
                     <div class="text-right">
                         <button href="" class="btn btn-rounded btn-success " id="tambah" >+ tambah data</button>
-                        <a href="{{route('kelengkapanCetak')}}" class="btn btn-rounded btn-primary " style="margin-right:5px;"><i class="ti-printer"></i> cetak data</a>
+                        <a href="{{route('kelengkapanKendaraanCetak')}}" class="btn btn-rounded btn-primary " style="margin-right:5px;"><i class="ti-printer"></i> cetak data</a>
                     </div>
                 <br>
                     <div class="data-tables">
@@ -109,7 +109,7 @@
             })
         }
         //fungsi get data  item kedaraan
-        getItemKendaraan(){
+        getItemKendaraan = () =>{
             $.ajax({
                     type: "GET",
                     url: "{{ url('/api/item-kendaraan')}}",
@@ -213,7 +213,7 @@
                         {"data": "status"},
                         {data: null , render : function ( data, type, row, meta ) {
                             let uuid = row.uuid;
-                            let nama = row.item-kendaraan.nama;
+                            let nama = row.uuid;
                             return type === 'display'  ?
                             '<button onClick="edit(\''+uuid+'\')" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#editmodal"><i class="ti-pencil"></i></button> <button onClick="hapus(\'' + uuid + '\',\'' + nama + '\')" class="btn btn-sm btn-outline-danger" > <i class="ti-trash"></i></button>':
                         data;

@@ -64,7 +64,7 @@
                     <div class="form-group"><input type="hidden" id="id" name="id"  class="form-control"></div>
                     <div class="form-group"><label  class=" form-control-label">Pilih Kendaraan</label>
                         <select class="form-control" name="kendaraan_id" id="kendaraan_id">
-                            <option value="">ini ngambil dari dara kendaraan</option>
+                            <option value="">ini ngambil dari data kendaraan</option>
                         </select>
                     </div>
                     <div class="form-group"><label  class=" form-control-label">Pilih objek Transmisi</label>
