@@ -5,7 +5,7 @@
                     <div class="col-lg-12 mt-5">
                         <div class="card">
                             <div class="card-body">
-                               
+                                <h1 class="text-center">Selamat datang </h1>
                                 <div class="invoice-buttons text-right">
                                 </div>
                             </div>

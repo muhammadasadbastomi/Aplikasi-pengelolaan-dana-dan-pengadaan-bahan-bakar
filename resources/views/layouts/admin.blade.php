@@ -68,7 +68,7 @@
         <div class="main-content">
             <div class="header-area">
                 <div class="row align-items-center">
-                    <div class="col-md-6 col-sm-8 clearfix">
+                    {{-- <div class="col-md-6 col-sm-8 clearfix">
                         <div class="nav-btn pull-left">
                             <span></span>
                             <span></span>
@@ -80,8 +80,8 @@
                                 <i class="ti-search"></i>
                             </form>
                         </div>
-                    </div>
-                    <div class="col-md-6 col-sm-4 clearfix">
+                    </div> --}}
+                    {{-- <div class="col-md-6 col-sm-4 clearfix">
                         <ul class="notification-area pull-right">
                             <li id="full-view"><i class="ti-fullscreen"></i></li>
                             <li id="full-view-exit"><i class="ti-zoom-out"></i></li>
@@ -106,7 +106,7 @@
                                 <a href="" class="btn btn-light">logout</a>
                             </li>
                         </ul>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
          @yield('content')
