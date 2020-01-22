@@ -56,12 +56,11 @@ Route::namespace('API')->prefix('api')->name('API.')->group(function(){
      });
 
 });
-/*
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth/login');
 });
-*/
-Route::get('/', 'adminController@index')
+Route::get('/admin/index', 'adminController@index')
         ->name('adminIndex');
 
 // Route Bidang
