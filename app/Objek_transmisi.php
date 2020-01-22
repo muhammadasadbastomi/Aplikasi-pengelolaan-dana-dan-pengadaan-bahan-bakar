@@ -14,8 +14,8 @@ class Objek_transmisi extends Model
         'id'
     ];
 
-    // public function seksi()
-    // {
-    //     return $this->HasMany('App\Seksi');
-    // }
+    public function status_transmisi()
+    {
+        return $this->HasMany('App\Status_transmisi');
+    }
 }
