@@ -47,6 +47,14 @@ Route::namespace('API')->prefix('api')->name('API.')->group(function(){
         Route::delete('{uuid}', 'KelengkapanController@delete')->name('delete');
      });
 
+    Route::prefix('objek')->name('objek.')->group(function(){
+        Route::get('', 'ObjekController@get')->name('get');
+        Route::get('{uuid}', 'ObjekController@find')->name('find');
+        Route::post('', 'ObjekController@create')->name('create');
+        Route::put('{uuid}', 'ObjekController@update')->name('update');
+        Route::delete('{uuid}', 'ObjekController@delete')->name('delete');
+     });
+
 });
 /*
 Route::get('/', function () {
