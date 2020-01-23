@@ -58,6 +58,16 @@ class adminController extends Controller
         return view('admin.statusTransmisi.index');
     }
 
+    public function pencairanIndex(){
+
+        return view('admin.pencairan.index');
+    }
+
+    public function pencairanAdd(){
+
+        return view('admin.pencairan.add');
+    }
+
     public function bidangCetak(){
         $bidang=bidang::all();
         $tgl= Carbon::now()->format('d-m-Y');
