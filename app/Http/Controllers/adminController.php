@@ -7,8 +7,11 @@ use App\karyawan;
 use App\kendaraan;
 use App\item_kendaraan;
 use App\kelengkapan;
+use App\Pencairan;
+use App\Status_transmisi;
 use Carbon\Carbon;
 use PDF;
+use HCrypt;
 use Illuminate\Http\Request;
 
 class adminController extends Controller
@@ -63,9 +66,17 @@ class adminController extends Controller
         return view('admin.pencairan.index');
     }
 
-    public function pencairanAdd(){
+    public function pencairanAdd(Request $request){
+        $pencairan = new pencairan;
+        $pencairan->user_id = $request->user_id;
+        $pencairan->save();
+        $pencairan_id = $pencairan->id;
+        $uuid = HCrypt::encrypt($pencairan_id);
+        $setuuid = pencairan::findOrFail($pencairan_id);
+        $setuuid->uuid = $uuid;
+        $setuuid->update();
 
-        return view('admin.pencairan.add');
+        return view('admin.pencairan.add',compact('setuuid'));
     }
 
     public function bidangCetak(){
@@ -114,6 +125,14 @@ class adminController extends Controller
         $pdf =PDF::loadView('laporan.kelengkapanKeseluruhan', ['kelengkapan'=>$kelengkapan,'tgl'=>$tgl]);
         $pdf->setPaper('a4', 'potrait');
         return $pdf->stream('Laporan data Kelengkapan.pdf');
+    }
+
+    public function statusTransmisiCetak(){
+        $status=Status_transmisi::all();
+        $tgl= Carbon::now()->format('d-m-Y');
+        $pdf =PDF::loadView('laporan.statusTransmisiKeseluruhan', ['status'=>$status,'tgl'=>$tgl]);
+        $pdf->setPaper('a4', 'potrait');
+        return $pdf->stream('Laporan data status transmisi.pdf');
     }
 
 }

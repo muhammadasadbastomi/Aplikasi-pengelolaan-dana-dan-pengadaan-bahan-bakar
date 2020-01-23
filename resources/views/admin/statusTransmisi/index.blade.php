@@ -9,7 +9,7 @@
                     <h4 class="header-title">Tabel Data Status transmisi</h4>
                     <div class="text-right">
                         <button href="" class="btn btn-rounded btn-success " id="tambah" >+ tambah data</button>
-                        <a href="#" class="btn btn-rounded btn-primary " style="margin-right:5px;"><i class="ti-printer"></i> cetak data</a>
+                        <a href="{{Route('statusTransmisiCetak')}}" class="btn btn-rounded btn-primary " style="margin-right:5px;"><i class="ti-printer"></i> cetak data</a>
                     </div>
                 <br>
                     <div class="data-tables">
@@ -62,7 +62,7 @@
                         </select>
                     </div>
                     <div class="form-group"><label  class=" form-control-label">Pilih Item Kendaraan</label>
-                        <select class="form-control" name="objek_transmisi" id="objek_transmisi">
+                        <select class="form-control" name="objek_transmisi_id" id="objek_transmisi_id">
                             <option value="">-- pilih item --</option>
                         </select>
                     </div>
@@ -112,12 +112,12 @@
         getItemKendaraan = () =>{
             $.ajax({
                     type: "GET",
-                    url: "{{ url('/api/item-kendaraan')}}",
+                    url: "{{ url('/api/objek')}}",
                     beforeSend: false,
                     success : function(returnData) {
                         $.each(returnData.data, function (index, value) {
-                        $('#objek_transmisi').append(
-                            '<option value="'+value.uuid+'">'+value.nama+'</option>'
+                        $('#objek_transmisi_id').append(
+                            '<option value="'+value.uuid+'">'+value.jenis+'</option>'
                         )
                     })
                 }
@@ -183,7 +183,7 @@
                         $('.modal-title').text('Edit Data');
                         $('#id').val(returnData.data.uuid);
                         $('#kendaraan_id').val(returnData.data.kendaraan.uuid);
-                        $('#objek_transmisi').val(returnData.data.item_kendaraan.uuid);
+                        $('#objek_transmisi_id').val(returnData.data.objek_transmisi.uuid);
                         $("input[name=status][value=" + returnData.data.status + "]").attr('checked', 'checked');
                         $('#btn-form').text('Ubah Data');
                         $('#mediumModal').modal('show');
@@ -208,9 +208,9 @@
                     },
                     columns: [
                         {"data": "kendaraan.nopol"},
-                        {"data": "item_kendaraan.nama"},
-                        {"data": "updated_at"},
+                        {"data": "objek_transmisi.jenis"},
                         {"data": "status"},
+                        {"data": "updated_at"},
                         {data: null , render : function ( data, type, row, meta ) {
                             let uuid = row.uuid;
                             let nama = row.kendaraan.nopol;

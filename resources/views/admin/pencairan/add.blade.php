@@ -8,7 +8,7 @@
                 <div class="card-header"><h4 class="header-title">Tabel data Objek Transmisi</h4></div>
                 <div class="card-body">
                         <form action="" method="post">
-                        <input type="hidden" class="form-control" name="pencairan_id" id="pencairan_id" >
+                        <input type="text" class="form-control" name="pencairan_id" id="pencairan_id" value="{{$setuuid->id}}">
                         <div class="form-group">
                                 <label for="">kendaraan</label>
                                 <select class="form-control" name="kendaraan_id" id="kendaraan_id">

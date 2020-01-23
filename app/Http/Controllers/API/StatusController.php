@@ -15,7 +15,7 @@ class StatusController extends APIController
     public function get(){
         $status_transmisi = json_decode(redis::get("status_transmisi::all"));
         if (!$status_transmisi) {
-            $status_transmisi = status_transmisi::with('objek_transmisi')->get();
+            $status_transmisi = status_transmisi::with('objek_transmisi','kendaraan')->get();
             if (!$status_transmisi) {
                 return $this->returnController("error", "failed get status_transmisi data");
             }
@@ -31,7 +31,7 @@ class StatusController extends APIController
         }
         $status_transmisi = Redis::get("status_transmisi:$id");
         if (!$status_transmisi) {
-            $status_transmisi = status_transmisi::with('objek_transmisi')->where('id',$id)->first();
+            $status_transmisi = status_transmisi::with('kendaraan','objek_transmisi')->where('id',$id)->first();
             if (!$status_transmisi){
                 return $this->returnController("error", "failed find data status_transmisi");
             }
@@ -76,7 +76,7 @@ class StatusController extends APIController
         if (!$status_transmisi) {
             return $this->returnController("error", "failed find data status_transmisi");
         }
-        $status_transmisi = status_transmisi::with('objek_transmisi')->where('id',$id)->first();
+        $status_transmisi = status_transmisi::with('objek_transmisi','kendaraan')->where('id',$id)->first();
         Redis::del("status_transmisi:all");
         Redis::set("status_transmisi:$id", $status_transmisi);
         return $this->returnController("ok", $status_transmisi);
