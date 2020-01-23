@@ -114,6 +114,12 @@ Route::get('/objektransmisi/index', 'adminController@objekTransmisiIndex')
 Route::get('/statusTransmisi/index', 'adminController@statusTransmisiIndex')
         ->name('statusTransmisiIndex');
 
+//Objek Transmisi
+Route::get('/pencairan/index', 'adminController@pencairanIndex')
+        ->name('pencairanIndex');
+Route::get('/pencairan/add', 'adminController@pencairanAdd')
+        ->name('pencairanAdd');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

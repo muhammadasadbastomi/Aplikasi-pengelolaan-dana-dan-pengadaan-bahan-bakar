@@ -130,7 +130,7 @@
             let csrf_token=$('meta[name="csrf_token"]').attr('content');
             Swal.fire({
                         title: 'apa anda yakin?',
-                        text: " Menghapus  Data kelengkapan " + nama,
+                        text: " Menghapus  Data kelengkapan  kendaraan " + nama,
                         showCancelButton: true,
                         confirmButtonColor: '#3085d6',
                         cancelButtonColor: '#d33',
@@ -213,7 +213,7 @@
                         {"data": "status"},
                         {data: null , render : function ( data, type, row, meta ) {
                             let uuid = row.uuid;
-                            let nama = row.uuid;
+                            let nama = row.kendaraan.nopol;
                             return type === 'display'  ?
                             '<button onClick="edit(\''+uuid+'\')" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#editmodal"><i class="ti-pencil"></i></button> <button onClick="hapus(\'' + uuid + '\',\'' + nama + '\')" class="btn btn-sm btn-outline-danger" > <i class="ti-trash"></i></button>':
                         data;
