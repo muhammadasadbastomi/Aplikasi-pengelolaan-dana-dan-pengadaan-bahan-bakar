@@ -90,9 +90,15 @@ class RincianController extends APIController
         if (!$rincian) {
             return $this->returnController("error", "failed find data rincian");
         }
-
-        $rincian->rincian     = $req->rincian;
-        $rincian->keterangan    = $req->keterangan;
+        $total_harga_item = $req->volume * $req->harga_satuan;
+        
+        // $rincian->pencairan_id = $req->pencairan_id;
+        $rincian->kendaraan_id = HCrypt::decrypt($req->kendaraan_id);    
+        $rincian->pencairan_id = HCrypt::decrypt($req->pencairan_id);    
+        $rincian->tanggal_transaksi = $req->tanggal_transaksi;  
+        $rincian->nama_item = $req->nama_item;
+        $rincian->volume = $req->volume;
+        $rincian->total_harga_item = $total_harga_item;
         $rincian->update();
         if (!$rincian) {
             return $this->returnController("error", "failed find data rincian");
