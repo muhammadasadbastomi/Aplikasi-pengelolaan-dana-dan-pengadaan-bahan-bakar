@@ -135,6 +135,8 @@ Route::get('/pencairan/index', 'adminController@pencairanIndex')
         ->name('pencairanIndex');
 Route::post('/pencairan/index', 'adminController@pencairanAdd')
         ->name('pencairanAdd');
+Route::get('/pencairan/detail/{uuid}', 'adminController@pencairanDetail')
+        ->name('pencairanDetail');
 
 Auth::routes();
 

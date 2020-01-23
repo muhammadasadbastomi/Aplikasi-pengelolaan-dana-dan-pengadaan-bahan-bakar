@@ -144,7 +144,7 @@
                             let uuid = row.uuid;
                             let nopol = row.nopol;
                             return type === 'display'  ?
-                            '<button onClick="hapus(\'' + uuid + '\',\'' + nopol + '\')" class="btn btn-sm btn-outline-danger" > <i class="ti-trash"></i></button>':
+                            '<a class="btn btn-sm btn-outline-primary" href="/pencairan/detail/'+ uuid +'"> <i class="ti-eye"></i></a> <button onClick="hapus(\'' + uuid + '\',\'' + nopol + '\')" class="btn btn-sm btn-outline-danger" > <i class="ti-trash"></i></button>':
                         data;
                         }}
                     ]

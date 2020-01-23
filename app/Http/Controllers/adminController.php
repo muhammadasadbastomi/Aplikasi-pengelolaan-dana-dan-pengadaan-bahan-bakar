@@ -80,6 +80,12 @@ class adminController extends Controller
         return view('admin.pencairan.add',compact('setuuid'));
     }
 
+    public function pencairanDetail($uuid){
+        $id = HCrypt::decrypt($uuid);
+        $pencairan = pencairan::findOrFail($id);
+        return view('admin.pencairan.detail',compact('pencairan'));
+    }
+
     public function bidangCetak(){
         $bidang=bidang::all();
         $tgl= Carbon::now()->format('d-m-Y');
