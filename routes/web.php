@@ -62,7 +62,7 @@ Route::namespace('API')->prefix('api')->name('API.')->group(function(){
         Route::delete('{uuid}', 'StatusController@delete')->name('delete');
      });
      Route::prefix('rincian')->name('rincian.')->group(function(){
-        Route::get('get/{id}', 'RincianController@get')->name('get');
+        Route::get('get/{uuid}', 'RincianController@get')->name('get');
         Route::get('{uuid}', 'RincianController@find')->name('find');
         Route::post('', 'RincianController@create')->name('create');
         Route::put('{uuid}', 'RincianController@update')->name('update');

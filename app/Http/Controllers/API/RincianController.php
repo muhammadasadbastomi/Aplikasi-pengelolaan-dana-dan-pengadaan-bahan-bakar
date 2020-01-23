@@ -5,16 +5,16 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Pencairan;
 use App\Rincian;
-use App\Item;
 use HCrypt;
 use Illuminate\Support\Facades\Redis;
 
 class RincianController extends APIController
 {
-    public function get($id){
+    public function get($uuid){
+        $id = HCrypt::decrypt($uuid);
         $rincian = json_decode(redis::get("rincian::all"));
         if (!$rincian) {
-            $rincian = rincian::with('item','kendaraan')->where('pencairan_id',$id)->get();
+            $rincian = rincian::with('kendaraan')->where('pencairan_id',$id)->get();
             if (!$rincian) {
                 return $this->returnController("error", "failed get rincian data");
             }
@@ -52,7 +52,10 @@ class RincianController extends APIController
         $rincian->pencairan_id = HCrypt::decrypt($req->pencairan_id);    
         $rincian->tanggal_transaksi = $req->tanggal_transaksi;  
         $rincian->nama_item = $req->nama_item;
+        $rincian->satuan = $req->satuan;
+        $rincian->harga_satuan = $req->harga_satuan;
         $rincian->volume = $req->volume;
+        $rincian->tanggal_transaksi = $req->tanggal_transaksi;
         $rincian->total_harga_item = $total_harga_item;
         $rincian->save();
 
