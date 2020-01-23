@@ -19,7 +19,7 @@ class CreateRinciansTable extends Migration
             $table->unsignedbigInteger('kendaraan_id');
             $table->text('uuid')->nullable();
             $table->string('nama_item');
-            $table->integer('satuan');
+            $table->string('satuan')->length(20);
             $table->double('harga_satuan');
             $table->double('volume');
             $table->double('total_harga_item');
