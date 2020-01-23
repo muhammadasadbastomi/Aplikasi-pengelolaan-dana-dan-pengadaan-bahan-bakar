@@ -23,4 +23,9 @@ class Kendaraan extends Model
      {
       return $this->HasOne('App\Kelengkapan');
      }
+
+     public function status_transmisi()
+     {
+      return $this->HasOne('App\Status_transmisi');
+     }
 }
