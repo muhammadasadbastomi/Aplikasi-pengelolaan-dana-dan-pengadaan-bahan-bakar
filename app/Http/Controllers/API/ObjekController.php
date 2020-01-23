@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Status_transmisi;
-use App\Objek;
+use App\Objek_transmisi;
 use HCrypt;
 
 class ObjekController extends APIController
