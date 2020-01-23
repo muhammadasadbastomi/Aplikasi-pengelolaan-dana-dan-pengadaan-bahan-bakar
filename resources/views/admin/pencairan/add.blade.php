@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-12 mt-5">
             <div class="card">
-                <div class="card-header"><h4 class="header-title">Tabel data Objek Transmisi</h4></div>
+                <div class="card-header"><h4 class="header-title">Tambah Pencairan {{$setuuid->keperluan}}</h4></div>
                 <div class="card-body">
                         <form id="form1" action="" method="post">
                         <input type="text" class="form-control" name="pencairan_id" id="pencairan_id" value="{{$setuuid->uuid}}">
@@ -13,16 +13,6 @@
                                 <label for="">kendaraan</label>
                                 <select class="form-control" name="kendaraan_id" id="kendaraan_id">
                                     <option value="">-- pilih kendaraan --</option>
-                                </select>
-                            </div>
-                        <div class="form-group">
-                                <label for="">Kepeluan</label>
-                                <select class="form-control" name="keperluan" id="keperluan">
-                                    <option value="">-- pilih keperluan --</option>
-                                    <option value="BBM">BBM</option>
-                                    <option value="Servis Mesin">Servis Mesin</option>
-                                    <option value="beli sparepate">beli sparepate</option>
-                                    <option value="lain-lain">lain-lain</option>
                                 </select>
                             </div>
                             <div class="form-group">

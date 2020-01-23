@@ -69,6 +69,7 @@ class adminController extends Controller
     public function pencairanAdd(Request $request){
         $pencairan = new pencairan;
         $pencairan->user_id = $request->user_id;
+        $pencairan->keperluan = $request->keperluan;
         $pencairan->save();
         $pencairan_id = $pencairan->id;
         $uuid = HCrypt::encrypt($pencairan_id);
