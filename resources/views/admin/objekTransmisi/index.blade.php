@@ -51,8 +51,8 @@
             <div class="modal-body">
                 <form  method="post" action="">
                     <div class="form-group"><input type="hidden" id="id" name="id"  class="form-control"></div>
-                    <div class="form-group"><label  class=" form-control-label">Kode Transmisi</label><input type="text" id="kd_transmisi" name="kd_transmisi"  class="form-control"></div>
-                    <div class="form-group"><label  class=" form-control-label">Jenis Transmisi</label><input type="text" id="jenis_transmisi" name="jenis_transmisi"  class="form-control"></div>
+                    <div class="form-group"><label  class=" form-control-label">Kode Transmisi</label><input type="text" id="kode_transmisi" name="kode_transmisi"  class="form-control"></div>
+                    <div class="form-group"><label  class=" form-control-label">Jenis Transmisi</label><input type="text" id="jenis" name="jenis"  class="form-control"></div>
             <div class="modal-footer">
                     <button type="button" class="btn " data-dismiss="modal"> <i class="ti-close"></i> Batal</button>
                     <button id="btn-form" type="submit" class="btn btn-primary"><i class="ti-save"></i> Simpan</button>
@@ -109,7 +109,7 @@
             $('#tambah').click(function(){
                 $('.modal-title').text('Tambah Data');
                 $('#kode_transmisi').val('');
-                $('#jenis_transmisi').val('');  
+                $('#jenis').val('');  
                 $('#btn-form').text('Simpan Data');
                 $('#mediumModal').modal('show');
             })
@@ -124,7 +124,7 @@
                         $('.modal-title').text('Edit Data');
                         $('#id').val(returnData.data.uuid);
                         $('#kode_transmisi').val(returnData.data.kode_transmisi);
-                        $('#jenis_transmisi').val(returnData.data.jenis_transmisi);
+                        $('#jenis').val(returnData.data.jenis);
                         $('#btn-form').text('Ubah Data');
                         $('#mediumModal').modal('show');
                     }
@@ -148,7 +148,7 @@
                     },
                     columns: [
                         {"data": "kode_transmisi"},
-                        {"data": "jenis_transmisi"},
+                        {"data": "jenis"},
                         {data: null , render : function ( data, type, row, meta ) {
                             let uuid = row.uuid;
                             let nama = row.kode_transmisi;
