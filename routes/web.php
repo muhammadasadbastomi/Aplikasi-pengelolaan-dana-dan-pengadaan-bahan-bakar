@@ -113,11 +113,13 @@ Route::get('/objektransmisi/index', 'adminController@objekTransmisiIndex')
 //Objek Transmisi
 Route::get('/statusTransmisi/index', 'adminController@statusTransmisiIndex')
         ->name('statusTransmisiIndex');
+Route::get('/statusTransmisi/cetak', 'adminController@statusTransmisiCetak')
+        ->name('statusTransmisiCetak');
 
-//Objek Transmisi
+//Pencairan
 Route::get('/pencairan/index', 'adminController@pencairanIndex')
         ->name('pencairanIndex');
-Route::get('/pencairan/add', 'adminController@pencairanAdd')
+Route::post('/pencairan/index', 'adminController@pencairanAdd')
         ->name('pencairanAdd');
 
 Auth::routes();

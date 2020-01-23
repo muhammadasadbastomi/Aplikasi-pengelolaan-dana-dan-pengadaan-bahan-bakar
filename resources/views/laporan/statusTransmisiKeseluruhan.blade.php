@@ -92,24 +92,24 @@
     <hr style="margin-top:1px;">
     <div class="container">
         <div class="isi">
-            <h2 style="text-align:center;">DATA ITEM KENDARAAN</h2>
+            <h2 style="text-align:center;">DATA STATUS TRANSMISI</h2>
             <table class="table table-hover" id="myTable">
                         <thead>
                         <tr>
                             <th>No</th>
                             <th>Nomor Polisi</th>
-                            <th>Item</th>
+                            <th>Transmisi</th>
                             <th>Status</th>
                             <th>Pemeriksaan Terakhir</th>
                         </tr>
                         </thead>
                         <tbody>
                                 <?php $no = 0 ?>
-                            @foreach ($kelengkapan as $d)
+                            @foreach ($status as $d)
                         <tr>
                             <td>{{$no = $no + 1}}</td>
                             <td>{{ $d->kendaraan->nopol }}</td>
-                            <td>{{ $d->item_kendaraan->nama }}</td>
+                            <td>{{ $d->objek_transmisi->jenis }}</td>
                             <td>{{ $d->status }}</td>
                             <td>{{ $d->updated_at }}</td>
                         </tr>
