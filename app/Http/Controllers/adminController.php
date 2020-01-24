@@ -142,4 +142,12 @@ class adminController extends Controller
         return $pdf->stream('Laporan data status transmisi.pdf');
     }
 
+    public function pencairanCetak(){
+        $pencairan = pencairan::all();
+        $tgl       = Carbon::now()->format('d-m-Y');
+        $pdf       =PDF::loadView('laporan.pencairanKeseluruhan', ['pencairan'=>$pencairan,'tgl'=>$tgl]);
+        $pdf->setPaper('a4', 'potrait');
+        return $pdf->stream('Laporan data pencairan.pdf');
+    }
+
 }

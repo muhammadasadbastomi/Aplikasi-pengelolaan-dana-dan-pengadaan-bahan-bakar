@@ -10,10 +10,22 @@
                        <h1>Detail Pencairan</h1><br>
                        </div>
                        <input type="hidden" id="pencairan_id" value="{{$pencairan->uuid}}">
-                       <h5>Pencairan :{{$pencairan->keperluan}}</h5>
-                       <h5>Tanggal Pencairan :{{$pencairan->created_at}}</h5>
-                       <h5>Total Pencairan : Rp.{{$pencairan->total}}</h5>
-                       <br>
+                       <div class="col-4">
+                        <table  class="table table-bordered">
+                            <tr>
+                                <td>Pencairan</td>
+                                <td>: {{$pencairan->keperluan}}</td>
+                            </tr>
+                            <tr>
+                                <td>Tanggal Pencairan</td>
+                                <td>: {{$pencairan->created_at}}</td>
+                            </tr>
+                            <tr>
+                                <td>Total Pencairan</td>
+                                <td>: Rp.{{$pencairan->total}}</td>
+                            </tr>
+                        </table>
+                       </div>
                        <br>
                         <table id="datatable" class="table table-striped table-bordered text-center" style="width:100%">
                             <thead>
@@ -74,8 +86,12 @@
                         {"data": "nama_item"},
                         {"data": "volume"},
                         {"data": "satuan"},
-                        {"data": "harga_satuan"},
-                        {"data": "total_harga_item"}
+                        {data: null , render : function ( data, type, row, meta ) {
+                            return '<p> Rp.'+ row.harga_satuan +'<p>';
+                            }},
+                        {data: null , render : function ( data, type, row, meta ) {
+                            return '<p> Rp.'+ row.total_harga_item +'<p>';
+                            }},  
                     ]
                 });
             });

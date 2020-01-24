@@ -9,14 +9,14 @@
                     <h4 class="header-title">Tabel data Pencairan</h4>
                     <div class="text-right">
                         <button href="" class="btn btn-rounded btn-success " id="tambah" >+ tambah data</button>
-                        <a href="{{Route('kendaraanCetak')}}" class="btn btn-rounded btn-primary " style="margin-right:5px;"><i class="ti-printer"></i> cetak data</a>
+                        <a href="{{Route('pencairanCetak')}}" class="btn btn-rounded btn-primary " style="margin-right:5px;"><i class="ti-printer"></i> cetak data</a>
                     </div>
                 <br>
                     <div class="data-tables">
                     <table id="datatable" class="table table-striped table-bordered text-center" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>Kebutuhan</th>
+                                    <th>keperluan</th>
                                     <th>Tanggal Pencairan</th>
                                     <th>total </th>
                                     <th>Aksi</th>
@@ -27,7 +27,7 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th>Kebutuhan</th>
+                                    <th>keperluan</th>
                                     <th>Tanggal Pencairan</th>
                                     <th>total </th>
                                     <th>Aksi</th>
@@ -60,7 +60,7 @@
                                     <option value="">-- pilih keperluan --</option>
                                     <option value="BBM">BBM</option>
                                     <option value="Servis Mesin">Servis Mesin</option>
-                                    <option value="beli sparepate">beli sparepate</option>
+                                    <option value="beli sparepart">beli sparepart</option>
                                     <option value="lain-lain">lain-lain</option>
                                 </select>
                             </div>
@@ -139,7 +139,9 @@
                     columns: [
                         {"data": "keperluan"},
                         {"data": "created_at"},
-                        {"data": "total"},
+                        {data: null , render : function ( data, type, row, meta ) {
+                            return '<p> Rp.'+ row.total +'<p>';
+                            }},
                         {data: null , render : function ( data, type, row, meta ) {
                             let uuid = row.uuid;
                             let nopol = row.nopol;

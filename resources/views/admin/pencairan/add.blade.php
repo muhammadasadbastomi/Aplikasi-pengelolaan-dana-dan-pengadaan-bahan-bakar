@@ -8,7 +8,7 @@
                 <div class="card-header"><h4 class="header-title">Tambah Pencairan {{$setuuid->keperluan}}</h4></div>
                 <div class="card-body">
                         <form id="form1" action="" method="post">
-                        <input type="text" class="form-control" name="pencairan_id" id="pencairan_id" value="{{$setuuid->uuid}}">
+                        <input type="hidden" class="form-control" name="pencairan_id" id="pencairan_id" value="{{$setuuid->uuid}}">
                         <div class="form-group">
                                 <label for="">kendaraan</label>
                                 <select class="form-control" name="kendaraan_id" id="kendaraan_id">
@@ -159,8 +159,12 @@
                         {"data": "nama_item"},
                         {"data": "volume"},
                         {"data": "satuan"},
-                        {"data": "harga_satuan"},
-                        {"data": "total_harga_item"},
+                        {data: null , render : function ( data, type, row, meta ) {
+                            return '<p> Rp.'+ row.harga_satuan +'<p>';
+                            }},
+                        {data: null , render : function ( data, type, row, meta ) {
+                            return '<p> Rp.'+ row.total_harga_item +'<p>';
+                            }},                           
                         {data: null , render : function ( data, type, row, meta ) {
                             let uuid = row.uuid;
                             let jabatan = row.jabatan;
