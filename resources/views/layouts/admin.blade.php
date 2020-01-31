@@ -59,7 +59,15 @@
                                 </ul>
                             </li>
                             <li><a href="{{Route('pencairanIndex')}}"><i class="ti-map-alt"></i> <span>Pencairan</span></a></li>
-                            <li class="active"><a href="invoice.html"><i class="ti-receipt"></i> <span>Invoice Summary</span></a></li>
+                            <li> <a  href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form></li>
                         </ul>
                     </nav>
                 </div>
@@ -103,7 +111,15 @@
                                 </div>
                             </li>
                             <li>
-                                <a href="" class="btn btn-light">logout</a>
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
                             </li>
                         </ul>
                     </div> --}}
