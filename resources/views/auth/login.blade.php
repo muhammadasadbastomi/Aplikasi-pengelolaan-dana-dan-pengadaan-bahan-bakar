@@ -10,7 +10,6 @@
 <div class="form-group">
 <label for="">Email  <i class="ti-email"></i></label>
 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
 @error('email')
     <span class="invalid-feedback" role="alert">
         <strong>{{ $message }}</strong>
@@ -41,7 +40,7 @@
 <button id="form_submit" type="submit">login <i class="ti-arrow-right"></i></button>
 </div>
 <div class="form-footer text-center mt-5">
-<p class="text-muted">belum punya akun? <a href="register.html">Daftar</a></p>
+<p class="text-muted">belum punya akun? <a href="{{route('register')}}">Daftar</a></p>
 </div>
 </div>
 </form>

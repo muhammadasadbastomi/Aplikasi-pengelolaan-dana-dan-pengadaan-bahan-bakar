@@ -8,6 +8,7 @@ use App\kendaraan;
 use App\item_kendaraan;
 use App\kelengkapan;
 use App\Pencairan;
+use App\Rincian;
 use App\Status_transmisi;
 use Carbon\Carbon;
 use PDF;
@@ -149,5 +150,14 @@ class adminController extends Controller
         $pdf->setPaper('a4', 'potrait');
         return $pdf->stream('Laporan data pencairan.pdf');
     }
+
+    public function notaCetak($id){
+        $pencairan=pencairan::findOrFail($id);
+        $rincian=rincian::where('pencairan_id',$id)->get();
+        $tgl= Carbon::now()->format('d-m-Y');
+        $pdf =PDF::loadView('laporan.notaCetak', ['pencairan'=>$pencairan,'rincian'=>$rincian,'tgl'=>$tgl]);
+        $pdf->setPaper('a4', 'potrait');
+        return $pdf->stream('Laporan Nota.pdf');
+      }
 
 }
