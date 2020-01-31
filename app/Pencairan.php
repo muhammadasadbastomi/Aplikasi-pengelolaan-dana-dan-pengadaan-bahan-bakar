@@ -8,7 +8,7 @@ class Pencairan extends Model
 {
     public function rincian()
     {
-    	return $this->belongsToMany('App\Rincian');
+    	return $this->hasMany('App\Rincian');
     }
 
     public function user()

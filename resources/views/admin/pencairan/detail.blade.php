@@ -54,7 +54,7 @@
                         </table>
                 </div>
                 <div class="card-footer text-right">
-                    <a href="" class="btn btn-sm btn-success"> Cetak Nota</a>
+                    <a href="{{Route('notaCetak',['id'=> $pencairan->id])}}" class="btn btn-sm btn-success"> Cetak Nota</a>
                 </div>
             </div>
         </div>

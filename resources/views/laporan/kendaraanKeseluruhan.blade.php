@@ -128,7 +128,7 @@
                       <h5>Kepala Dinas Kehutanan Provinsi Kalsel</h5>
                       <br>
                       <br>
-                      <h5 style="text-decoration:underline;">Nama</h5>
+                      <h5 style="text-decoration:underline;">Joko Handoyo, S.STP, M.AP</h5>
                       <h5>NIP. 19580726 1984 03 1 007</h5>
                       </div>
                     </div>
