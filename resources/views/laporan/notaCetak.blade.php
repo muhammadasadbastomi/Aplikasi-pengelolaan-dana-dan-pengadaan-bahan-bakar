@@ -14,7 +14,6 @@
         }
         table{
         border-collapse: collapse;
-        width:100%;
       }
       table, th, td{
         border: 1px solid black;
@@ -25,7 +24,6 @@
         color: white;
       }
       td{
-        text-align: center;
       }
       br{
           margin-bottom: 5px !important;
@@ -92,24 +90,42 @@
     <hr style="margin-top:1px;">
     <div class="container">
         <div class="isi">
-            <h2 style="text-align:center;">DATA PENCAIRAN</h2>
-            <table class="table table-hover" id="myTable">
+            <h3 style="text-align:;">Data Pencairan</h3>
+            <table width="300px">
+                            <tr>
+                                <td>Pencairan</td>
+                                <td>: {{$pencairan->keperluan}}</td>
+                            </tr>
+                            <tr>
+                                <td>Tanggal Pencairan</td>
+                                <td>: {{$pencairan->created_at}}</td>
+                            </tr>
+                            <tr>
+                                <td>Total Pencairan</td>
+                                <td>: Rp.{{$pencairan->total}}</td>
+                            </tr>
+                        </table>
+                        <br><br>
+                        <h2 style="text-align:center;">RINCIAN PENCAIRAN</h2>
+                        <table width="100%" class="table table-hover" id="myTable">
                         <thead>
                         <tr>
-                            <th>No</th>
-                            <th>Keperluan </th>
-                            <th>Tanggal Pencairan</th>
-                            <th>Total Pencairan</th>
+                            <th>Kendaraan</th>
+                            <th>Nama Item</th>
+                            <th>Volume</th>
+                            <th>Satuan</th>
+                            <th>Total</th>
                         </tr>
                         </thead>
                         <tbody>
                                 <?php $no = 0 ?>
-                            @foreach ($pencairan as $d)
+                        @foreach ($rincian as $d)
                         <tr>
-                            <td>{{$no = $no + 1}}</td>
-                            <td>{{ $d->keperluan }}</td>
-                            <td>{{ $d->created_at }}</td>
-                            <td>Rp.{{ $d->total}}</td>
+                            <td>{{ $d->kendaraan->nopol}}</td>
+                            <td>{{ $d->nama_item}}</td>
+                            <td>{{ $d->volume}}</td>
+                            <td>{{ $d->satuan}}</td>
+                            <td>{{ $d->total_harga_item}}</td>
                         </tr>
                         @endforeach
                         </tbody>

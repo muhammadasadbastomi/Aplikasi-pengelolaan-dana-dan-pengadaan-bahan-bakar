@@ -7,12 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 class Rincian extends Model
 {
     protected $hidden = [
-        'id','item_id','pencairan_id',
+        'id','item_id',
     ];
 
     public function item()
     {
         return $this->belongsTo('App\Item');
+    }
+
+    public function pencairan()
+    {
+        return $this->belongsTo('App\Pencairan');
     }
 
     public function kendaraan()

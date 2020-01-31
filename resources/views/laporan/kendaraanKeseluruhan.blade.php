@@ -92,7 +92,7 @@
     <hr style="margin-top:1px;">
     <div class="container">
         <div class="isi">
-            <h2 style="text-align:center;">DATA KARYAWAN</h2>
+            <h2 style="text-align:center;">DATA KENDARAAN</h2>
             <table class="table table-hover" id="myTable">
                         <thead>
                         <tr>
@@ -128,7 +128,7 @@
                       <h5>Kepala Dinas Kehutanan Provinsi Kalsel</h5>
                       <br>
                       <br>
-                      <h5 style="text-decoration:underline;">Nama</h5>
+                      <h5 style="text-decoration:underline;">Joko Handoyo, S.STP, M.AP</h5>
                       <h5>NIP. 19580726 1984 03 1 007</h5>
                       </div>
                     </div>
