@@ -41,7 +41,7 @@
 <button id="form_submit" type="submit">login <i class="ti-arrow-right"></i></button>
 </div>
 <div class="form-footer text-center mt-5">
-<p class="text-muted">belum punya akun? <a href="register.html">Daftar</a></p>
+<p class="text-muted">belum punya akun? <a href="{{route('register')}}">Daftar</a></p>
 </div>
 </div>
 </form>
