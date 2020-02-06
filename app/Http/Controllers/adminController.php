@@ -70,6 +70,13 @@ class adminController extends Controller
     public function pencairanAdd(Request $request){
         $pencairan = new pencairan;
         $pencairan->user_id = $request->user_id;
+        if($request->foto != null){
+            $FotoExt  = $request->foto->getClientOriginalExtension();
+            $FotoName = $request->user_id.' - '.$request->keperluan;
+            $foto   = $FotoName.'.'.$FotoExt;
+            $request->foto->move('img/nota', $foto);
+            $pencairan->foto       = $foto;
+            }
         $pencairan->keperluan = $request->keperluan;
         $pencairan->save();
         $pencairan_id = $pencairan->id;
