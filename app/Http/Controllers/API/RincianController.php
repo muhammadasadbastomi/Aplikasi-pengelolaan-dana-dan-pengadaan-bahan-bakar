@@ -55,7 +55,6 @@ class RincianController extends APIController
         $rincian->satuan = $req->satuan;
         $rincian->harga_satuan = $req->harga_satuan;
         $rincian->volume = $req->volume;
-        $rincian->tanggal_transaksi = $req->tanggal_transaksi;
         $rincian->total_harga_item = $total_harga_item;
         $rincian->save();
 
@@ -84,6 +83,7 @@ class RincianController extends APIController
 
 
     public function update($uuid, Request $req){
+        $total_harga_item = $req->volume * $req->harga_satuan;
         $id = HCrypt::decrypt($uuid);
         if (!$id) {
             return $this->returnController("error", "failed decrypt uuid");
@@ -100,7 +100,6 @@ class RincianController extends APIController
         $rincian->satuan = $req->satuan;
         $rincian->harga_satuan = $req->harga_satuan;
         $rincian->volume = $req->volume;
-        $rincian->tanggal_transaksi = $req->tanggal_transaksi;
         $rincian->total_harga_item = $total_harga_item;
 
         $rincian->update();
