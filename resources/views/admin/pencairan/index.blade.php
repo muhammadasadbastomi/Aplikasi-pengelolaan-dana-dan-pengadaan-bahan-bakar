@@ -64,6 +64,10 @@
                                     <option value="lain-lain">lain-lain</option>
                                 </select>
                             </div>
+                            <div class="form-group">
+                                <label for="">foto kuitansi</label>
+                                <input class="form-control" type="file" name="foto" id="foto">
+                            </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn " data-dismiss="modal"> <i class="ti-close"></i> Batal</button>
                                 <button type="submit" class="btn btn-primary"><i class="ti-save"></i> Simpan</button>
