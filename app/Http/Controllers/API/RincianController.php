@@ -94,7 +94,6 @@ class RincianController extends APIController
             return $this->returnController("error", "failed find data rincian");
         }
         $rincian->kendaraan_id = HCrypt::decrypt($req->kendaraan_id);
-        $rincian->pencairan_id = HCrypt::decrypt($req->pencairan_id);
         $rincian->tanggal_transaksi = $req->tanggal_transaksi;
         $rincian->nama_item = $req->nama_item;
         $rincian->satuan = $req->satuan;
