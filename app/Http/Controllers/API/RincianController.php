@@ -18,7 +18,7 @@ class RincianController extends APIController
             if (!$rincian) {
                 return $this->returnController("error", "failed get rincian data");
             }
-            Redis::set("rincian:all", $rincian);            
+            Redis::set("rincian:all", $rincian);
 
         }
         return $this->returnController("ok", $rincian);
@@ -44,24 +44,23 @@ class RincianController extends APIController
 
     public function create(Request $req){
         $total_harga_item = $req->volume * $req->harga_satuan;
-        
+
         $rincian = new rincian;
-        
+
         // $rincian->pencairan_id = $req->pencairan_id;
-        $rincian->kendaraan_id = HCrypt::decrypt($req->kendaraan_id);    
-        $rincian->pencairan_id = HCrypt::decrypt($req->pencairan_id);    
-        $rincian->tanggal_transaksi = $req->tanggal_transaksi;  
+        $rincian->kendaraan_id = HCrypt::decrypt($req->kendaraan_id);
+        $rincian->pencairan_id = HCrypt::decrypt($req->pencairan_id);
+        $rincian->tanggal_transaksi = $req->tanggal_transaksi;
         $rincian->nama_item = $req->nama_item;
         $rincian->satuan = $req->satuan;
         $rincian->harga_satuan = $req->harga_satuan;
         $rincian->volume = $req->volume;
-        $rincian->tanggal_transaksi = $req->tanggal_transaksi;
         $rincian->total_harga_item = $total_harga_item;
         $rincian->save();
 
         // if($item->keperluan == "Belanja Gajih Pegawai Kontrak" || "Belanja Makan Minum Harian")
         // {
-        //     //create sum total pencairan 
+        //     //create sum total pencairan
         //     $pencairan = Pencairan::findOrFail($rincian->pencairan_id);
         //     $pencairan->total = $rincian->total_harga_item;
         //     $pencairan->update();
@@ -81,9 +80,10 @@ class RincianController extends APIController
         return $this->returnController("ok", $rincian);
     }
 
-    
+
 
     public function update($uuid, Request $req){
+        $total_harga_item = $req->volume * $req->harga_satuan;
         $id = HCrypt::decrypt($uuid);
         if (!$id) {
             return $this->returnController("error", "failed decrypt uuid");
@@ -93,15 +93,13 @@ class RincianController extends APIController
         if (!$rincian) {
             return $this->returnController("error", "failed find data rincian");
         }
-        $total_harga_item = $req->volume * $req->harga_satuan;
-        
-        // $rincian->pencairan_id = $req->pencairan_id;
-        $rincian->kendaraan_id = HCrypt::decrypt($req->kendaraan_id);    
-        $rincian->pencairan_id = HCrypt::decrypt($req->pencairan_id);    
-        $rincian->tanggal_transaksi = $req->tanggal_transaksi;  
+        $rincian->tanggal_transaksi = $req->tanggal_transaksi;
         $rincian->nama_item = $req->nama_item;
+        $rincian->satuan = $req->satuan;
+        $rincian->harga_satuan = $req->harga_satuan;
         $rincian->volume = $req->volume;
         $rincian->total_harga_item = $total_harga_item;
+
         $rincian->update();
         if (!$rincian) {
             return $this->returnController("error", "failed find data rincian");

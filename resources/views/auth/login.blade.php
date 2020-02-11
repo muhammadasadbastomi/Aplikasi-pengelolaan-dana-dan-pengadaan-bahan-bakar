@@ -1,7 +1,7 @@
 @extends('layouts.loginRegister')
 
 @section('content')<form method="POST" action="{{ route('login') }}">
-    @csrf
+    {{ csrf_field() }}
 <div class="text-center">
 <img src="{{asset('img/logo.png')}}" width="50" alt="">
 <h5>Silahkan Login untung menggunakan aplikasi</h5>
@@ -17,7 +17,7 @@
 @enderror
 </div>
 <div class="form-group">
-<label for="">Password <i class="ti-lock"></i></label> 
+<label for="">Password <i class="ti-lock"></i></label>
 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
 @error('password')
