@@ -54,6 +54,11 @@
                                 </tr>
                             </tfoot>
                         </table>
+                        <br>
+                        <h5>Nota pembelian</h5>
+                        <img style="padding:10%;" class="profile-user-img img-fluid "
+                       src="{{asset('/img/nota/'.$pencairan->foto)}}"
+                       alt="User profile picture">
                 </div>
                 <div class="card-footer text-right">
                     <a href="{{Route('notaCetak',['id'=> $pencairan->id])}}" class="btn btn-sm btn-success"> Cetak Nota</a>
