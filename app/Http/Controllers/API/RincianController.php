@@ -101,9 +101,17 @@ class RincianController extends APIController
         $rincian->total_harga_item = $total_harga_item;
 
         $rincian->update();
+
         if (!$rincian) {
             return $this->returnController("error", "failed find data rincian");
         }
+
+        $total_harga = rincian::where('pencairan_id',$id)->get()->sum('total_harga_item');
+
+        $pencairan_id = $rincian->pencairan_id;
+        $pencairan = Pencairan::findOrFail($pencairan_id);
+        $pencairan->total = $total_harga_item;
+        $pencairan->update();
 
         Redis::del("rincian:all");
         Redis::set("rincian:$id", $rincian);
