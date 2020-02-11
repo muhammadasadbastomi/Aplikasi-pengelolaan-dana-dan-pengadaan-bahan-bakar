@@ -1,5 +1,5 @@
 <?php
-
+Route::group(['middleware' => 'auth'], function() {
 Route::namespace('API')->prefix('api')->name('API.')->group(function(){
     Route::prefix('bidang')->name('bidang.')->group(function(){
         Route::get('', 'BidangController@get')->name('get');
@@ -77,10 +77,6 @@ Route::namespace('API')->prefix('api')->name('API.')->group(function(){
      });
 
 });
-
-Route::get('/', function () {
-    return view('auth/login');
-});
 Route::get('/admin/index', 'adminController@index')
         ->name('adminIndex');
 
@@ -141,6 +137,12 @@ Route::get('/pencairan/cetak', 'adminController@pencairanCetak')
         ->name('pencairanCetak');
 Route::get('/nota/cetak/{id}', 'adminController@notaCetak')
         ->name('notaCetak');
+});
+
+Route::get('/', function () {
+    return view('auth/login');
+});
+
 
 Auth::routes();
 
