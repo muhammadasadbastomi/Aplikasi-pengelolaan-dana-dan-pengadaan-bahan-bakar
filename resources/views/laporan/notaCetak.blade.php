@@ -131,6 +131,10 @@
                         </tbody>
                     </table>
                       <br>
+                      <!-- <p>Gambar Nota</p>
+                      <img style="padding:10%;" class="profile-user-img img-fluid "
+                       src="{{asset('/img/nota/'.$pencairan->foto)}}"
+                       alt="User profile picture"> -->
                       <br>
                       <div class="ttd">
                         <h5> <p>Banjarbaru, {{ $tgl }}</p></h5>
