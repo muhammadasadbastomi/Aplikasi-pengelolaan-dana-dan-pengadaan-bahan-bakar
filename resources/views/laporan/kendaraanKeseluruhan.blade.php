@@ -124,12 +124,12 @@
                       <br>
                       <div class="ttd">
                         <h5> <p>Banjarbaru, {{ $tgl }}</p></h5>
-                       <h6>Mengetahui</h6>
+                       <h5>Mengetahui</h5>
                       <h5>Kepala Dinas Kehutanan Provinsi Kalsel</h5>
                       <br>
                       <br>
-                      <h5 style="text-decoration:underline;">Joko Handoyo, S.STP, M.AP</h5>
-                      <h5>NIP. 19580726 1984 03 1 007</h5>
+                      <h5 style="text-decoration:underline; margin:0px;">Joko Handoyo, S.STP, M.AP</h5>
+                      <h5 style="margin:0px;">NIP. 19580726 1984 03 1 007</h5>
                       </div>
                     </div>
              </div>

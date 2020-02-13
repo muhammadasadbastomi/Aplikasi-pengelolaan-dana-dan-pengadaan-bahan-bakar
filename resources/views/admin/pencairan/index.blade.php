@@ -60,8 +60,8 @@
                                     <option value="">-- pilih keperluan --</option>
                                     <option value="BBM">BBM</option>
                                     <option value="Servis Mesin">Servis Mesin</option>
-                                    <option value="sparepart">sparepart</option>
-                                    <option value="lain-lain">lain-lain</option>
+                                    <option value="sparepart">Sparepart</option>
+                                    <option value="lain-lain">Lain-lain</option>
                                 </select>
                             </div>
                             <div class="form-group">
