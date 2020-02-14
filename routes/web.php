@@ -120,6 +120,8 @@ Route::get('/kelengkapanKendaraan/cetak', 'adminController@kelengkapanKendaraanC
 //Objek Transmisi
 Route::get('/objektransmisi/index', 'adminController@objekTransmisiIndex')
         ->name('objekTransmisiIndex');
+Route::get('/objekTransmisi/cetak', 'adminController@objekTransmisiCetak')
+        ->name('objekTransmisiCetak');
 //Objek Transmisi
 Route::get('/statusTransmisi/index', 'adminController@statusTransmisiIndex')
         ->name('statusTransmisiIndex');

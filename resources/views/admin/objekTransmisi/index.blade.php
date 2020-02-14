@@ -9,7 +9,7 @@
                     <h4 class="header-title">Tabel data Objek Transmisi</h4>
                     <div class="text-right">
                         <button href="" class="btn btn-rounded btn-success " id="tambah" >+ tambah data</button>
-                        <a href="" class="btn btn-rounded btn-primary " style="margin-right:5px;"><i class="ti-printer"></i> cetak data</a>
+                        <a href="{{Route('objekTransmisiCetak')}}" class="btn btn-rounded btn-primary " style="margin-right:5px;"><i class="ti-printer"></i> cetak data</a>
                     </div>
                 <br>
                     <div class="data-tables">
@@ -61,12 +61,12 @@
         </div>
     </div>
 </div>
-</div>     
- </div> 
+</div>
+ </div>
 @endsection
 @section('script')
     <script>
-          //fungsi hapus 
+          //fungsi hapus
           hapus = (uuid, nama) =>{
             let csrf_token=$('meta[name="csrf_token"]').attr('content');
             Swal.fire({
@@ -109,7 +109,7 @@
             $('#tambah').click(function(){
                 $('.modal-title').text('Tambah Data');
                 $('#kode_transmisi').val('');
-                $('#jenis').val('');  
+                $('#jenis').val('');
                 $('#btn-form').text('Simpan Data');
                 $('#mediumModal').modal('show');
             })
