@@ -92,24 +92,22 @@
     <hr style="margin-top:1px;">
     <div class="container">
         <div class="isi">
-            <h2 style="text-align:center;">DATA PENCAIRAN</h2>
+            <h2 style="text-align:center;">DATA OBJEK TRANSMISI</h2>
             <table class="table table-hover" id="myTable">
                         <thead>
                         <tr>
                             <th>No</th>
-                            <th>Keperluan </th>
-                            <th>Tanggal Pencairan</th>
-                            <th>Total Pencairan</th>
+                            <th>Kode Transmisi</th>
+                            <th>Jenis</th>
                         </tr>
                         </thead>
                         <tbody>
                                 <?php $no = 0 ?>
-                            @foreach ($pencairan as $d)
+                            @foreach ($objek as $d)
                         <tr>
                             <td>{{$no = $no + 1}}</td>
-                            <td>{{ $d->keperluan }}</td>
-                            <td>{{ $d->created_at }}</td>
-                            <td>Rp.{{ $d->total}}</td>
+                            <td>{{ $d->kode_transmisi }}</td>
+                            <td>{{ $d->jenis }}</td>
                         </tr>
                         @endforeach
                         </tbody>

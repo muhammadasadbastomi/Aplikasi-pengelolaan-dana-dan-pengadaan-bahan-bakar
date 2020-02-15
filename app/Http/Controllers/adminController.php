@@ -10,6 +10,7 @@ use App\kelengkapan;
 use App\Pencairan;
 use App\Rincian;
 use App\Status_transmisi;
+use App\Objek_transmisi;
 use Carbon\Carbon;
 use PDF;
 use HCrypt;
@@ -48,7 +49,7 @@ class adminController extends Controller
     }
 
     public function itemKendaraanIndex(){
-        
+
         return view('admin.itemKendaraan.index');
     }
 
@@ -101,7 +102,7 @@ class adminController extends Controller
         $pdf->setPaper('a4', 'potrait');
         return $pdf->stream('Laporan data Bidang.pdf');
       }
-    
+
     public function seksiCetak(){
         $seksi=seksi::all();
         $tgl= Carbon::now()->format('d-m-Y');
@@ -140,6 +141,14 @@ class adminController extends Controller
         $pdf =PDF::loadView('laporan.kelengkapanKeseluruhan', ['kelengkapan'=>$kelengkapan,'tgl'=>$tgl]);
         $pdf->setPaper('a4', 'potrait');
         return $pdf->stream('Laporan data Kelengkapan.pdf');
+    }
+
+    public function objekTransmisiCetak(){
+        $objek=objek_transmisi::all();
+        $tgl= Carbon::now()->format('d-m-Y');
+        $pdf =PDF::loadView('laporan.objekTransmisiKeseluruhan', ['objek'=>$objek,'tgl'=>$tgl]);
+        $pdf->setPaper('a4', 'potrait');
+        return $pdf->stream('Laporan data objek transmisi.pdf');
     }
 
     public function statusTransmisiCetak(){

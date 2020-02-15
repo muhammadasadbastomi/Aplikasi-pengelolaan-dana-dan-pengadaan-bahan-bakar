@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 <br>
-<div class="main-content-inner">
+<div id="print"  class="main-content-inner">
     <div class="row">
         <div class="col-12 mt-5">
             <div class="card">
@@ -40,7 +40,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            
+
                             </tbody>
                             <tfoot>
                                 <tr>
@@ -62,7 +62,9 @@
                 </div>
                 <div class="card-footer text-right">
                     <a href="{{Route('notaCetak',['id'=> $pencairan->id])}}" class="btn btn-sm btn-success"> Cetak Nota</a>
+                    <input type="button" value="Cetak Detail Pencairan" onclick="PrintDiv();"  class="btn btn-sm btn-primary"/>
                 </div>
+
             </div>
         </div>
     </div>
@@ -90,7 +92,7 @@
                             <div class="form-group">
                                 <label for="">Satuan</label>
                                 <input class="form-control" type="text" name="satuan" id="satuan">
-                            </div>                            
+                            </div>
                             <div class="form-group">
                                 <label for="">Harga Satuan</label>
                                 <input class="form-control" type="text" name="harga_satuan" id="harga_satuan">
@@ -115,6 +117,15 @@
 @endsection
 @section('script')
     <script>
+
+    function PrintDiv() {
+       var divToPrint = document.getElementById('print');
+       var popupWin = window.open();
+       popupWin.document.open();
+       popupWin.document.write('<html><body onload="window.print()">' + divToPrint.innerHTML + '</html>');
+        popupWin.document.close();
+            }
+
             edit = uuid =>{
                 $.ajax({
                     type: "GET",
@@ -125,15 +136,15 @@
                         $('#uuid').val(returnData.data.uuid);
                         $('#nama_item').val(returnData.data.nama_item);
                         $('#satuan').val(returnData.data.satuan);
-                        $('#harga_satuan').val(returnData.data.harga_satuan);  
+                        $('#harga_satuan').val(returnData.data.harga_satuan);
                         $('#volume').val(returnData.data.volume);
-                        $('#tanggal_transaksi').val(returnData.data.tanggal_transaksi);    
+                        $('#tanggal_transaksi').val(returnData.data.tanggal_transaksi);
                         $('#btn-form').text('Ubah Data');
                         $('#mediumModal').modal('show');
                     }
                 })
             }
-          //fungsi render datatable            
+          //fungsi render datatable
           $(document).ready(function() {
                 let id = $('#pencairan_id').val();
                 $('#datatable').DataTable( {
@@ -165,11 +176,11 @@
                             return type === 'display'  ?
                             '<button onClick="edit(\''+uuid+'\')" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#editmodal"><i class="ti-pencil"></i>':
                         data;
-                        }}  
+                        }}
                     ]
                 });
             });
-            
+
               //event form submit
               $("form").submit(function (e) {
                     e.preventDefault()

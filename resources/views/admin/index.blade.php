@@ -12,5 +12,6 @@
                         </div>
                     </div>
                 </div>
+                <img src="{{asset('/img/background.jpg')}}" alt="">
             </div>
 @endsection
