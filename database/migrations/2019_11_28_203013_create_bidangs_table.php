@@ -17,7 +17,7 @@ class CreateBidangsTable extends Migration
             $table->bigIncrements('id');
             $table->text('uuid')->nullable();
             $table->string('kode_bidang')->length(20);
-            $table->string('nama')->length(50);
+            $table->string('nama')->length(255);
             $table->timestamps();
         });
     }
