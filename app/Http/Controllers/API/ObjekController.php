@@ -15,7 +15,7 @@ class ObjekController extends APIController
     public function get(){
         $objek_transmisi = json_decode(redis::get("objek_transmisi::all"));
         if (!$objek_transmisi) {
-            $objek_transmisi = objek_transmisi::with('status_transmisi')->get();
+            $objek_transmisi = objek_transmisi::all();
             if (!$objek_transmisi) {
                 return $this->returnController("error", "failed get objek_transmisi data");
             }
@@ -31,7 +31,7 @@ class ObjekController extends APIController
         }
         $objek_transmisi = Redis::get("objek_transmisi:$id");
         if (!$objek_transmisi) {
-            $objek_transmisi = objek_transmisi::with('bidang')->where('id',$id)->first();
+            $objek_transmisi = objek_transmisi::where('id',$id)->first();
             if (!$objek_transmisi){
                 return $this->returnController("error", "failed find data objek_transmisi");
             }
@@ -61,7 +61,7 @@ class ObjekController extends APIController
             return $this->returnController("error", "failed decrypt uuid");
         }
         $objek_transmisi = objek_transmisi::findOrFail($id);
-        
+
         $objek_transmisi->fill($req->all())->save();
 
         $objek_transmisi->update();
